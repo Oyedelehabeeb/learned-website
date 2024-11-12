@@ -5,58 +5,65 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import Loader from "./Ui/Loader";
 
-import AppLayout from "./Ui/AppLayout";
-import WebDevelopmentPage from "./Pages/WebDevelopmentPage";
-import MobileDevelopmentPage from "./Pages/MobileDevelopmentPage";
-import GameDevelopmentPage from "./Pages/GameDevelopmentPage";
-import DataSciencePage from "./Pages/DataSciencePage";
-import WebDesignPage from "./Pages/WebDesignPage";
-import GraphicsDesignPage from "./Pages/GraphicsDesignPage";
-import UserExperiencePage from "./Pages/UserExperiencePage";
-import DigitalMarketingPage from "./Pages/DigitalMarketingPage";
-import SocialMediaMarketingPage from "./Pages/SocialMediaMarketingPage";
-import BrandingPage from "./Pages/BrandingPage";
-import EntrepreneurPage from "./Pages/EntrepreneurPage";
-import SalesPage from "./Pages/SalesPage";
-import ManagementPage from "./Pages/ManagementPage";
-import NutritionPage from "./Pages/NutritionPage";
-import MentalHealthPage from "./Pages/MentalHealthPage";
-import FitnessHealth from "./Features/Fitness/FitnessHealth";
-import PageNotFound from "./Ui/PageNotFound";
-import CourseDetails from "./Ui/CourseDetails";
-import DesignHero from "./Features/Design/DesignHero";
-import DevelopmentHero from "./Features/Development/DevelopmentHero";
-import MarketingHero from "./Features/Marketing/MarketingHero";
-import BusinessHero from "./Features/Business/BusinessHero";
-import FitnessHero from "./Features/Fitness/FitnessHero";
-import CryptocurrencyPage from "./Pages/CryptocurrencyPage";
-import InvestingPage from "./Pages/InvestingPage";
-import AccountingPage from "./Pages/AccountingPage";
-import MedicalCodingPage from "./Pages/MedicalCodingPage";
-import AnatomyPage from "./Pages/AnatomyPage";
-import ResearchPage from "./Pages/ResearchPage";
-import FinanceHero from "./Features/Finance/FinanceHero";
-import AcademicsHero from "./Features/Academics/AcademicsHero";
-import FinancePage from "./Pages/FinancePage";
-import AcademicsPage from "./Pages/AcademicsPage";
-import ClinicalResearchPage from "./Pages/ClinicalResearchPage";
-import InstructorsDetails from "./Ui/InstructorsDetails";
-import LoginPage from "./Pages/LoginPage";
-import SignupPage from "./Pages/SignupPage";
-import SettingsPage from "./Pages/SettingsPage";
-import ProtectedRoute from "./Ui/ProtectedRoute";
-import ForgotPasswordPage from "./Pages/ForgotPasswordPage";
-import UpdateUserPasswordPage from "./Pages/UpdateUserPasswordPage";
-import WishListPage from "./Pages/WishListPage";
-import HomePage from "./Pages/HomePage";
-import DesignPage from "./Pages/DesignPage";
-import DevelopmentPage from "./Pages/DevelopmentPage";
-import MarketingPage from "./Pages/MarketingPage";
-import BusinessPage from "./Pages/BusinessPage";
-import FitnessPage from "./Pages/FitnessPage";
-import MyLearningPage from "./Pages/MyLearningPage";
-import CartPage from "./Pages/CartPage";
-// import LandingPage from "./Features/Authentication/Landing";
+const AppLayout = lazy(() => import("./Ui/AppLayout"));
+const WebDevelopmentPage = lazy(() => import("./Pages/WebDevelopmentPage"));
+const MobileDevelopmentPage = lazy(() =>
+  import("./Pages/MobileDevelopmentPage")
+);
+const GameDevelopmentPage = lazy(() => import("./Pages/GameDevelopmentPage"));
+const DataSciencePage = lazy(() => import("./Pages/DataSciencePage"));
+const WebDesignPage = lazy(() => import("./Pages/WebDesignPage"));
+const GraphicsDesignPage = lazy(() => import("./Pages/GraphicsDesignPage"));
+const UserExperiencePage = lazy(() => import("./Pages/UserExperiencePage"));
+const DigitalMarketingPage = lazy(() => import("./Pages/DigitalMarketingPage"));
+const SocialMediaMarketingPage = lazy(() =>
+  import("./Pages/SocialMediaMarketingPage")
+);
+const BrandingPage = lazy(() => import("./Pages/BrandingPage"));
+const EntrepreneurPage = lazy(() => import("./Pages/EntrepreneurPage"));
+const SalesPage = lazy(() => import("./Pages/SalesPage"));
+const ManagementPage = lazy(() => import("./Pages/ManagementPage"));
+const NutritionPage = lazy(() => import("./Pages/NutritionPage"));
+const MentalHealthPage = lazy(() => import("./Pages/MentalHealthPage"));
+const FitnessHealth = lazy(() => import("./Features/Fitness/FitnessHealth"));
+const PageNotFound = lazy(() => import("./Ui/PageNotFound"));
+const CourseDetails = lazy(() => import("./Ui/CourseDetails"));
+const DesignHero = lazy(() => import("./Features/Design/DesignHero"));
+const DevelopmentHero = lazy(() =>
+  import("./Features/Development/DevelopmentHero")
+);
+const MarketingHero = lazy(() => import("./Features/Marketing/MarketingHero"));
+const BusinessHero = lazy(() => import("./Features/Business/BusinessHero"));
+const FitnessHero = lazy(() => import("./Features/Fitness/FitnessHero"));
+const CryptocurrencyPage = lazy(() => import("./Pages/CryptocurrencyPage"));
+const InvestingPage = lazy(() => import("./Pages/InvestingPage"));
+const AccountingPage = lazy(() => import("./Pages/AccountingPage"));
+const MedicalCodingPage = lazy(() => import("./Pages/MedicalCodingPage"));
+const AnatomyPage = lazy(() => import("./Pages/AnatomyPage"));
+const ResearchPage = lazy(() => import("./Pages/ResearchPage"));
+const FinanceHero = lazy(() => import("./Features/Finance/FinanceHero"));
+const AcademicsHero = lazy(() => import("./Features/Academics/AcademicsHero"));
+const FinancePage = lazy(() => import("./Pages/FinancePage"));
+const AcademicsPage = lazy(() => import("./Pages/AcademicsPage"));
+const ClinicalResearchPage = lazy(() => import("./Pages/ClinicalResearchPage"));
+const InstructorsDetails = lazy(() => import("./Ui/InstructorsDetails"));
+const LoginPage = lazy(() => import("./Pages/LoginPage"));
+const SignupPage = lazy(() => import("./Pages/SignupPage"));
+const SettingsPage = lazy(() => import("./Pages/SettingsPage"));
+const ProtectedRoute = lazy(() => import("./Ui/ProtectedRoute"));
+const ForgotPasswordPage = lazy(() => import("./Pages/ForgotPasswordPage"));
+const UpdateUserPasswordPage = lazy(() =>
+  import("./Pages/UpdateUserPasswordPage")
+);
+const WishListPage = lazy(() => import("./Pages/WishListPage"));
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const DesignPage = lazy(() => import("./Pages/DesignPage"));
+const DevelopmentPage = lazy(() => import("./Pages/DevelopmentPage"));
+const MarketingPage = lazy(() => import("./Pages/MarketingPage"));
+const BusinessPage = lazy(() => import("./Pages/BusinessPage"));
+const FitnessPage = lazy(() => import("./Pages/FitnessPage"));
+const MyLearningPage = lazy(() => import("./Pages/MyLearningPage"));
+const CartPage = lazy(() => import("./Pages/CartPage"));
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
 
 function App() {
