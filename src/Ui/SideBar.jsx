@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { SiCssdesignawards, SiGooglemarketingplatform } from "react-icons/si";
 import {
   MdOutlineDeveloperMode,
@@ -22,7 +22,7 @@ function SideBar() {
   return (
     <div className="h-full bg-darkGray text-beige">
       <nav className="flex flex-col items-start p-4 space-y-4">
-        <div className="flex gap-x-4 items-center mb-4">
+        <Link to="/settings" className="flex gap-x-4 items-center mb-4">
           <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-full border-2 border-yellow-400 overflow-hidden">
             <img
               src={avatar ? avatar : "default-user.jpg"}
@@ -33,7 +33,7 @@ function SideBar() {
           <span className="ml-2 text-lg font-semibold hidden md:block">
             {fullname ? fullname : fullName}
           </span>
-        </div>
+        </Link>
 
         <NavLink
           to="/academics/academics-hero"

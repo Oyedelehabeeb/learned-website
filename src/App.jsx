@@ -50,6 +50,7 @@ const InstructorsDetails = lazy(() => import("./Ui/InstructorsDetails"));
 const LoginPage = lazy(() => import("./Pages/LoginPage"));
 const SignupPage = lazy(() => import("./Pages/SignupPage"));
 const SettingsPage = lazy(() => import("./Pages/SettingsPage"));
+const PaymentHistoryPage = lazy(() => import("./Pages/PaymentHistoryPage"));
 const ProtectedRoute = lazy(() => import("./Ui/ProtectedRoute"));
 const ForgotPasswordPage = lazy(() => import("./Pages/ForgotPasswordPage"));
 const UpdateUserPasswordPage = lazy(() =>
@@ -100,6 +101,10 @@ function App() {
                 <Route path="/wishlist" element={<WishListPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
+                <Route
+                  path="/payment-history"
+                  element={<PaymentHistoryPage />}
+                />
                 <Route path="/mylearning" element={<MyLearningPage />} />
                 <Route path="/design" element={<DesignPage />} />
                 <Route path="/development" element={<DevelopmentPage />} />
@@ -221,7 +226,7 @@ function App() {
           containerStyle={{ margin: "8px" }}
           toastOptions={{
             success: {
-              duration: 3000,
+              duration: 5000,
             },
             error: {
               duration: 5000,

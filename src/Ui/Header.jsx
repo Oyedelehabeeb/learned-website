@@ -10,23 +10,27 @@ function Header() {
   const numOfwishListItems = wishlist.length;
 
   return (
-    <header className="flex justify-between items-center px-6 py-5  text-beige w-full h-16 fixed top-0 z-10 bg-darkGray shadow-sm">
-      <NavLink to="/home" className="text-xl font-bold">
-        Learned
-      </NavLink>
-
+    <header className="flex justify-evenly md:justify-between items-center px-6 py-5  text-beige w-full h-16 fixed top-0 z-10 bg-darkGray shadow-sm">
+      <div>
+        {" "}
+        <NavLink to="/home" className="text-xl font-bold">
+          Learned
+        </NavLink>
+      </div>
       <ul className="list-none flex space-x-8">
         <li>
           <NavLink
             to="/wishlist"
             className={({ isActive }) =>
               isActive
-                ? "text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300" // Active class with underline
+                ? "text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300"
                 : "hover:text-yellow-300"
             }
           >
             Wishlist{" "}
-            <span className={numOfwishListItems === 0 ? "hidden" : "inline"}>
+            <span
+              className={`${numOfwishListItems === 0 ? "hidden" : "md:inline"}`}
+            >
               ({numOfwishListItems})
             </span>
           </NavLink>
@@ -36,14 +40,28 @@ function Header() {
             to="/cart"
             className={({ isActive }) =>
               isActive
-                ? "text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300" // Active class with underline
+                ? "text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300"
                 : "hover:text-yellow-300"
             }
           >
             Cart{" "}
-            <span className={numOfCartItems === 0 ? "hidden" : "inline"}>
+            <span
+              className={`${numOfCartItems === 0 ? "hidden" : "md:inline"}`}
+            >
               ({numOfCartItems})
             </span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/payment-history"
+            className={({ isActive }) =>
+              isActive
+                ? "text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300"
+                : "hover:text-yellow-300"
+            }
+          >
+            History
           </NavLink>
         </li>
         <li>
@@ -51,25 +69,13 @@ function Header() {
             to="/settings"
             className={({ isActive }) =>
               isActive
-                ? " text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300" // Active class with underline
+                ? " text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300"
                 : "hover:text-yellow-300"
             }
           >
             Settings
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink
-            to="/mylearning"
-            className={({ isActive }) =>
-              isActive
-                ? "text-yellow-300 hover:text-yellow-300 border-b-2 border-yellow-300" // Active class with underline
-                : "hover:text-yellow-300"
-            }
-          >
-            My Learning
-          </NavLink>
-        </li> */}
       </ul>
     </header>
   );

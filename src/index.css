@@ -13,8 +13,8 @@
       #0000 79.5%,
       #269af2 80%
     ),
-    radial-gradient(var(--r1) var(--r2) at bottom, #269af2 79.5%, #0000 80%),
-    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%),
+    radial-gradient(var(--r1) var(--r2) at bottom, #c0c0c0 79.5%, #0000 80%),
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #c0c0c0 80%),
     #627380;
   background-size: 50.5% 220%;
   background-position: -100% 0%, 0% 0%, 100% 0%;

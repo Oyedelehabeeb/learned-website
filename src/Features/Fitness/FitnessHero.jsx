@@ -4,7 +4,7 @@ import { FaDumbbell, FaAppleAlt, FaBrain } from "react-icons/fa";
 function FitnessHero() {
   return (
     <div className="relative bg-gradient-to-r from-customGray to-darkGray text-white py-16 px-8 text-center">
-      <div className="relative z-10">
+      <div className="relative">
         <h1 className="text-4xl sm:text-5xl font-bold mb-6 drop-shadow-md">
           Achieve Your Fitness Goals
         </h1>

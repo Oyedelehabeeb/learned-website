@@ -5,8 +5,7 @@ import { FaPaintBrush, FaLaptopCode, FaPenNib } from "react-icons/fa";
 function DesignHero() {
   return (
     <div className="relative bg-gradient-to-r from-customGray to-darkGray text-white py-16 px-8 text-center">
-      {/* Main content with layered effect */}
-      <div className="relative z-10">
+      <div className="relative">
         <h1 className="text-4xl sm:text-5xl font-bold mb-6 drop-shadow-md">
           Explore the World of Design
         </h1>

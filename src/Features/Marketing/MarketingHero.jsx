@@ -4,7 +4,7 @@ import { FaBullhorn, FaHashtag, FaTag } from "react-icons/fa";
 function MarketingHero() {
   return (
     <div className="relative bg-gradient-to-r from-customGray to-darkGray text-white py-16 px-8 text-center">
-      <div className="relative z-10">
+      <div className="relative">
         <h1 className="text-4xl sm:text-5xl font-bold mb-6 drop-shadow-md">
           Master the Art of Marketing
         </h1>
@@ -13,7 +13,7 @@ function MarketingHero() {
           Marketing, and Branding. Reach your audience like never before.
         </p>
 
-        <div className="flex flex-wrap   justify-center gap-4 mt-8">
+        <div className="flex flex-col justify-center gap-4 mt-8">
           <NavLink
             to="/marketing/digital-marketing"
             className="group bg-yellow-400 text-gray-800 px-6 py-4 rounded-lg flex items-center space-x-3 transform hover:scale-105 transition duration-300 ease-in-out"

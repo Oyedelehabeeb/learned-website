@@ -595,14 +595,14 @@ export async function addToMyLearning(learningItems) {
   return data;
 }
 
-export async function clearCart(cartItemIds) {
-  console.log("Clearing cart items:", cartItemIds);
+export async function clearCart(userId) {
+  // console.log("Clearing cart items:", cartItemIds);
 
   const { data, error } = await supabase
     .from("cart")
     .delete()
-    .in("id", cartItemIds)
-    .select();
+    .select()
+    .eq("user_id", userId);
 
   if (error) {
     console.error("Error clearing cart:", error);
