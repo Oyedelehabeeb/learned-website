@@ -15,8 +15,8 @@ function Home() {
       </header>
 
       {/* course categories */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto">
+      <section className="bg-white">
+        <div className="pt-8 container mx-auto">
           <h2 className="text-3xl font-semibold text-center mb-8">
             Course Categories
           </h2>

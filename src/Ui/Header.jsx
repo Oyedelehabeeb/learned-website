@@ -29,7 +29,9 @@ function Header() {
           >
             Wishlist{" "}
             <span
-              className={`${numOfwishListItems === 0 ? "hidden" : "md:inline"}`}
+              className={`${
+                numOfwishListItems === 0 ? "hidden" : "md:inline"
+              } hidden`}
             >
               ({numOfwishListItems})
             </span>
