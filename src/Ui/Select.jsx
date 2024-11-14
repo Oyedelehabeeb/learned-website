@@ -2,7 +2,7 @@
 function Select({ options, value, onChange }) {
   return (
     <select
-      className="bg-darkGray text-beige rounded-md p-2"
+      className="bg-darkGray  text-beige w-32 md:w-auto rounded-md p-2"
       value={value}
       onChange={onChange}
     >

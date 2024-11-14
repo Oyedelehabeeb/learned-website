@@ -22,7 +22,7 @@ function AppLayout() {
         </main>
       </div>
 
-      <footer className="text-white p-4 bg-darkGray text-center">
+      <footer className="text-white p-4 bg-darkGray text-center z-10 sm:z-auto md:z-auto">
         <Footer />
       </footer>
     </div>

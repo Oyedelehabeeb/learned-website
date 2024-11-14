@@ -43,7 +43,9 @@ function Accounting() {
         >
           <FiArrowLeft />
         </Link>
-        <h1 className="font-semibold text-3xl">Accounting Courses ({count})</h1>
+        <h1 className="font-semibold text-xs md:text-3xl">
+          Accounting Courses ({count})
+        </h1>
         <div className="space-x-4 flex">
           <CourseOperations />
         </div>

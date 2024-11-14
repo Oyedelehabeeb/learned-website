@@ -44,7 +44,7 @@ function MobileDevelopment() {
         >
           <FiArrowLeft />
         </Link>
-        <h1 className="font-semibold text-3xl">
+        <h1 className="font-semibold text-xs md:text-3xl">
           Mobile Development Courses ({count})
         </h1>
         <div className="space-x-8 flex">

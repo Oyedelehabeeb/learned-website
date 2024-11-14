@@ -41,7 +41,7 @@ function DataScience() {
         >
           <FiArrowLeft />
         </Link>
-        <h1 className="font-semibold text-3xl">
+        <h1 className="font-semibold text-xs md:text-3xl">
           Data Science Courses ({count})
         </h1>
         <div className="space-x-8 flex">

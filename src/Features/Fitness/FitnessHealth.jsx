@@ -42,7 +42,7 @@ function FitnessHealth() {
         >
           <FiArrowLeft />
         </Link>
-        <h1 className="font-semibold text-3xl">
+        <h1 className="font-semibold text-xs md:text-3xl">
           Health & Fitness Courses ({count})
         </h1>
         <div>

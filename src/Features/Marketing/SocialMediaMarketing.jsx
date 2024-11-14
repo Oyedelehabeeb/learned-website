@@ -46,13 +46,10 @@ function SocialMediaMarketing() {
         >
           <FiArrowLeft />
         </Link>
-        <h1 className="font-semibold text-3xl">
+        <h1 className="font-semibold text-xs md:text-3xl">
           Social Media Marketing Courses ({count})
         </h1>
         <div className="space-x-8 flex">
-          <button className="border border-solid border-blue-400 rounded-md bg-blue-500 p-2">
-            Filter
-          </button>
           <CourseOperations />
         </div>
       </div>

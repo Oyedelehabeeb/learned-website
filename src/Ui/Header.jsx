@@ -10,14 +10,14 @@ function Header() {
   const numOfwishListItems = wishlist.length;
 
   return (
-    <header className="flex justify-evenly md:justify-between items-center px-6 py-5  text-beige w-full h-16 fixed top-0 z-10 bg-darkGray shadow-sm">
+    <header className="flex justify-between items-center px-6 py-5  text-beige w-full h-16 fixed top-0 z-10 bg-darkGray shadow-sm">
       <div>
         {" "}
-        <NavLink to="/home" className="text-xl font-bold">
+        <NavLink to="/home" className=" text-lg md:text-xl font-bold">
           Learned
         </NavLink>
       </div>
-      <ul className="list-none flex space-x-8">
+      <ul className="list-none flex space-x-4 md:space-x-8">
         <li>
           <NavLink
             to="/wishlist"

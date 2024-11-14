@@ -8,7 +8,7 @@ import {
 function Footer() {
   return (
     <footer className="bg-darkGray text-beige">
-      <div className=" max-w-4xl mx-auto px-4">
+      <div className="max-w-2xl md:max-w-4xl mx-auto px-4">
         <p className="text-sm mb-4">
           &copy; {new Date().getFullYear()} Your E-Learning Platform. All rights
           reserved.

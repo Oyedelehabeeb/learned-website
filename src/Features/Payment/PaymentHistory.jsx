@@ -11,7 +11,7 @@ function PaymentHistory() {
   const email = user?.email;
 
   if (isLoading) return <Loader />;
-  if (paymentHistory.length === 0)
+  if (paymentHistory?.length === 0)
     return (
       <div className="flex flex-col items-center p-24 h-screen">
         <h2 className="text-2xl font-semibold">
@@ -39,7 +39,7 @@ function PaymentHistory() {
       </div>
 
       <div className="space-y-4">
-        {paymentHistory.map((payment, index) => (
+        {paymentHistory?.map((payment, index) => (
           <PaymentHistoryList payment={payment} key={index} />
         ))}
       </div>

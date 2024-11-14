@@ -5,13 +5,14 @@ import { useCart } from "../Features/Cart/useCart";
 import { useWishlist } from "../Features/WishList/useWishList";
 import { formatCurrency } from "../Utils/helper";
 import { useSession } from "../Services/useSession";
+import Loader from "./Loader";
 
 /* eslint-disable react/prop-types */
 function CourseLists({ course }) {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToWishlist, setIsAddedToWishlist] = useState(false);
 
-  const { data: session, isLoading, isError } = useSession();
+  const { data: session, isLoading } = useSession();
   const { courseId, title, imageUrl, price, instructor, rating } = course;
 
   const { addItem: addCartItem, isAdding: isAddingCart, cart } = useCart();
@@ -67,8 +68,7 @@ function CourseLists({ course }) {
     addWishlistItem(newItem);
   }
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Failed to load session.</p>;
+  if (isLoading) return <Loader />;
 
   return (
     <div className="border rounded-md shadow-lg hover:shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
@@ -91,7 +91,7 @@ function CourseLists({ course }) {
       <div className="p-4 flex justify-between items-center">
         {!isAddedToWishlist && (
           <button
-            className="px-4 py-2 bg-pink-500 text-white rounded-md hover:bg-pink-600 transition"
+            className="px-2 sm:px-3 md:px-4 h-10 md:h-auto sm:h-auto py-2 bg-pink-500 text-white rounded-md hover:bg-pink-600 transition"
             onClick={handleAddWishlistItem}
             disabled={isAddingWishlist}
           >
@@ -101,7 +101,7 @@ function CourseLists({ course }) {
 
         {!isAddedToCart && (
           <button
-            className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+            className="px-2 sm:px-3 md:px-4 h-10 md:h-auto sm:h-auto py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
             onClick={handleAddCartItem}
             disabled={isAddingCart}
           >
