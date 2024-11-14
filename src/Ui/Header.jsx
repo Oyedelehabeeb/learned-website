@@ -46,7 +46,9 @@ function Header() {
           >
             Cart{" "}
             <span
-              className={`${numOfCartItems === 0 ? "hidden" : "md:inline"}`}
+              className={`${
+                numOfCartItems === 0 ? "hidden" : "md:inline"
+              } hidden`}
             >
               ({numOfCartItems})
             </span>
