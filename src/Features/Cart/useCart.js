@@ -8,7 +8,7 @@ export function useCart() {
   // Query to get the cart items
   const { data: cart = [], isLoading: isCartLoading } = useQuery({
     queryKey: ["cart"],
-    queryFn: getCart, // Simplified
+    queryFn: getCart,
   });
 
   // Mutation to add item to the cart
@@ -23,7 +23,6 @@ export function useCart() {
         newItem,
       ]);
 
-      // Optionally refetch the cart for consistency
       queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
     onError: (err) => {

@@ -14,7 +14,7 @@ function PaymentHistory() {
   if (paymentHistory?.length === 0)
     return (
       <div className="flex flex-col items-center p-24 h-screen">
-        <h2 className="text-2xl font-semibold">
+        <h2 className=" text-xl md:text-2xl font-semibold">
           Your payment history is empty
         </h2>
         <Link to="/home" className="mt-4 text-blue-600 hover:underline">
@@ -25,7 +25,7 @@ function PaymentHistory() {
 
   return (
     <div className=" max-w-4xl mx-auto">
-      <div className="text-3xl font-bold text-center flex items-center justify-center space-x-4">
+      <div className="text-xl sm:text-2xl md:text-3xl font-bold text-center flex items-center justify-center space-x-4 mb-8">
         <MdManageHistory className="text-4xl" /> <span>Payment History</span>
       </div>
 

@@ -57,7 +57,9 @@ const CourseDetails = () => {
   return (
     <div className="max-w-6xl mx-auto p-8">
       <div className="mb-8">
-        <h1 className="text-4xl text-center font-bold">{title}</h1>
+        <h1 className=" text-xl sm:3xl md:text-4xl text-center font-bold">
+          {title}
+        </h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
@@ -69,32 +71,38 @@ const CourseDetails = () => {
 
         <div className="flex flex-col justify-between">
           <div>
-            <h2 className="text-xl font-semibold mb-4">
-              Instructor: {instructor}
+            <h2 className="sm:text-xl font-medium mb-4">
+              Instructor: <span className="font-normal">{instructor}</span>
             </h2>
 
             <div className="flex items-center mb-4">
-              <span className="text-lg font-semibold mr-2">Rating:</span>
+              <span className="sm:text-xl font-medium mr-2">Rating:</span>
               <span className="text-yellow-500 text-lg font-bold">
                 {rating} ⭐
               </span>
             </div>
 
             <div className="mb-4">
-              <h3 className="text-lg font-semibold">Language: {language}</h3>
+              <h3 className="sm:text-xl font-medium">
+                Language: <span className="font-normal"> {language}</span>
+              </h3>
             </div>
 
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold">
-                Students Enrolled: {student}
+            <div className="mb-8">
+              <h3 className="sm:text-xl font-medium">
+                Students Enrolled:{" "}
+                <span className="font-normal">{student}</span>
               </h3>
             </div>
           </div>
 
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold">
+          <div className="mb-6 flex justify-between items-center bg-customGray py-4 px-2 sm:px-4 rounded-md">
+            <h3 className="sm:text-xl text-beige font-semibold">
               Price: {formatCurrency(price)}
             </h3>
+            <button className="bg-darkGray text-sm sm:text-xl text-beige px-1 sm:px-4 py-2 h-15 md:h-auto sm:h-auto rounded-lg hover:bg-beige hover:text-darkGray">
+              Enrol now
+            </button>
           </div>
 
           {/* <div className="flex space-x-4">
@@ -122,7 +130,9 @@ const CourseDetails = () => {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-2xl font-semibold mb-4">Course Description</h3>
+        <h3 className="text-xl sm:2xl md:text-3xl font-semibold mb-4">
+          Course Description
+        </h3>
         <p className="text-beige border border-solid border-customGray rounded-md bg-customGray p-5">
           {description}
         </p>

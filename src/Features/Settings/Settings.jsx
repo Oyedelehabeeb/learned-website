@@ -78,8 +78,9 @@ function Settings() {
               type="text"
               id="fullname"
               value={fullname}
+              // defaultValue={fullname}
               onChange={(e) => setFullname(e.target.value)}
-              placeholder="Enter your fullname"
+              placeholder="Enter your full name"
               className="w-full border border-gray-300 rounded-md p-2"
             />
           </div>
