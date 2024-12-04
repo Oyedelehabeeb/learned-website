@@ -23,8 +23,6 @@ Advanced Search and Filtering: Easily find the right courses using dynamic filte
 
 Responsive Design: Optimized layout and experience across all devices.
 
-Lazy Loading: Components load dynamically to improve performance and user experience.
-
 Notifications: Receive feedback and updates with a beautifully designed notification system.
 
 Technologies Used
