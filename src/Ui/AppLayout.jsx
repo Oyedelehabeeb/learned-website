@@ -5,7 +5,7 @@ import SideBar from "./SideBar";
 
 function AppLayout() {
   return (
-    <div className="grid h-screen md:grid-rows-[auto_1fr_auto]">
+    <div className="grid h-screen md:grid-rows-[auto]">
       <header className="w-full h-16 fixed top-0 z-10">
         <Header />
       </header>
