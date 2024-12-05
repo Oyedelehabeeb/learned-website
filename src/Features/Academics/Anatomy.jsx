@@ -35,7 +35,6 @@ function Anatomy() {
 
   return (
     <div className="min-h-screen p-6 space-y-10">
-      {/* HEADER */}
       <div className="flex items-center justify-between">
         <Link
           to="/academics/academics-hero"

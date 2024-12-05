@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import Header from "./Header";
 import SideBar from "./SideBar";
 
@@ -22,9 +22,9 @@ function AppLayout() {
         </main>
       </div>
 
-      <footer className="text-white p-4 bg-darkGray text-center z-10 sm:z-auto md:z-auto">
+      {/* <footer className="text-white p-4 bg-darkGray text-center z-10 sm:z-auto md:z-auto">
         <Footer />
-      </footer>
+      </footer> */}
     </div>
   );
 }
