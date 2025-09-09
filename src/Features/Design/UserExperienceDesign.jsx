@@ -157,7 +157,7 @@ function UserExperienceDesign() {
         </div>
 
         {/* Pagination */}
-        <div className="mb-16">
+        <div className="mb-16 flex justify-center">
           <Pagination count={count} />
         </div>
 
@@ -184,7 +184,7 @@ function UserExperienceDesign() {
         </div>
 
         {/* Instructors Pagination */}
-        <div className="mt-8">
+        <div className="mt-8 flex justify-center">
           <InstructorsPagination count={count1} />
         </div>
       </div>

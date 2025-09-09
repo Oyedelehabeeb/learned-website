@@ -181,28 +181,23 @@ function WebDevelopment() {
         </div>
 
         {/* Instructors Section */}
-        <div>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              Meet Our Expert Instructors
+        <div className="bg-gradient-to-r from-emerald-600/10 to-green-600/10 rounded-3xl p-8">
+          <div className="flex items-center gap-3 mb-8">
+            <FaCode className="text-3xl text-emerald-600" />
+            <h2 className="text-3xl font-bold text-gray-800">
+              Popular Instructors
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Learn from full-stack developers and senior engineers from top
-              tech companies
-            </p>
           </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {webDevInstructors?.map((instructor, index) => (
+              <InstructorsLists instructor={instructor} key={index} />
+            ))}
+          </div>
+        </div>
 
-          <div className="bg-white rounded-3xl shadow-xl p-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {webDevInstructors?.map((instructor, index) => (
-                <InstructorsLists instructor={instructor} key={index} />
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 flex justify-center">
-            <InstructorsPagination count={count1} />
-          </div>
+        {/* Instructors Pagination */}
+        <div className="mt-8 flex justify-center">
+          <InstructorsPagination count={count1} />
         </div>
       </div>
     </div>
