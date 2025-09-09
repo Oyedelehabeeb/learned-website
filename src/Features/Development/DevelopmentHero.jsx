@@ -91,7 +91,7 @@ function DevelopmentHero() {
         </div>
 
         {/* Development Paths Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {developmentPaths.map((path, index) => {
             const IconComponent = path.icon;
             return (
@@ -107,33 +107,28 @@ function DevelopmentHero() {
                   {/* Content */}
                   <div className="relative z-10">
                     {/* Icon and title */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-2xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm">
-                          <IconComponent className="text-white text-2xl" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-bold text-white mb-1">
-                            {path.title}
-                          </h3>
-                          <div className="flex items-center gap-2 text-white text-opacity-80">
-                            <FaRocket className="text-sm" />
-                            <span className="text-sm font-medium">
-                              Start Learning
-                            </span>
-                          </div>
-                        </div>
+                    <div className="text-center mb-6">
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-2xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm mb-4">
+                        <IconComponent className="text-white text-2xl" />
                       </div>
-                      <FaArrowRight className="text-white text-opacity-60 group-hover:text-opacity-100 group-hover:translate-x-2 transition-all duration-300" />
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        {path.title}
+                      </h3>
+                      <div className="flex items-center justify-center gap-2 text-white text-opacity-80">
+                        <FaRocket className="text-sm" />
+                        <span className="text-sm font-medium">
+                          Start Learning
+                        </span>
+                      </div>
                     </div>
 
                     {/* Description */}
-                    <p className="text-white text-opacity-90 mb-6 leading-relaxed">
+                    <p className="text-white text-opacity-90 mb-6 leading-relaxed text-center">
                       {path.description}
                     </p>
 
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap justify-center gap-2 mb-6">
                       {path.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
@@ -145,7 +140,7 @@ function DevelopmentHero() {
                     </div>
 
                     {/* CTA */}
-                    <div className="flex items-center gap-2 text-white font-semibold group-hover:text-yellow-200 transition-colors duration-300">
+                    <div className="flex items-center justify-center gap-2 text-white font-semibold group-hover:text-yellow-200 transition-colors duration-300">
                       <span>Explore Courses</span>
                       <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
                     </div>

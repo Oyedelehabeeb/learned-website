@@ -5,9 +5,7 @@ import {
   MdOutlineBusinessCenter,
 } from "react-icons/md";
 import { IoMdFitness } from "react-icons/io";
-import { CiLogout } from "react-icons/ci";
-import { useLogout } from "../Features/Authentication/useLogout";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaHome, FaUserCircle } from "react-icons/fa";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { useUser } from "../Features/Authentication/useUser";
 
@@ -17,108 +15,126 @@ function SideBar() {
   const fullName = user?.user_metadata?.full_name;
   const avatar = user?.user_metadata?.avatar;
 
-  const { logout } = useLogout();
+  const navigationItems = [
+    {
+      to: "/home",
+      icon: FaHome,
+      label: "Home",
+      gradient: "from-darkGray to-customGray",
+    },
+    {
+      to: "/academics/academics-hero",
+      icon: FaBookOpen,
+      label: "Teaching & Academics",
+      gradient: "from-darkGray to-customGray",
+    },
+    {
+      to: "/development/development-hero",
+      icon: MdOutlineDeveloperMode,
+      label: "Development",
+      gradient: "from-darkGray to-customGray",
+    },
+    {
+      to: "/design/design-hero",
+      icon: SiCssdesignawards,
+      label: "Design",
+      gradient: "from-darkGray to-customGray",
+    },
+    {
+      to: "/marketing/marketing-hero",
+      icon: SiGooglemarketingplatform,
+      label: "Marketing",
+      gradient: "from-darkGray to-customGray",
+    },
+    {
+      to: "/finance/finance-hero",
+      icon: MdOutlineAccountBalanceWallet,
+      label: "Accounting & Finance",
+      gradient: "from-darkGray to-customGray",
+    },
+    {
+      to: "/business/business-hero",
+      icon: MdOutlineBusinessCenter,
+      label: "Business",
+      gradient: "from-darkGray to-customGray",
+    },
+    {
+      to: "/fitness/fitness-hero",
+      icon: IoMdFitness,
+      label: "Health & Fitness",
+      gradient: "from-darkGray to-customGray",
+    },
+  ];
 
   return (
-    <div className="h-full bg-darkGray text-beige">
-      <nav className="flex flex-col items-start p-4 space-y-4">
-        <Link to="/settings" className="flex gap-x-4 items-center mb-4">
-          <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-full border-2 border-yellow-400 overflow-hidden">
-            <img
-              src={avatar ? avatar : "default-user.jpg"}
-              alt={fullname || "User"}
-              className="w-full h-full object-cover"
-            />
+    <div className="h-full bg-customGray bg-opacity-95 backdrop-blur-lg border-r border-gray-600 shadow-lg flex flex-col">
+      <nav
+        className="flex flex-col p-6 space-y-2 flex-1 overflow-y-auto scrollbar-hide"
+        style={{
+          scrollbarWidth: "none" /* Firefox */,
+          msOverflowStyle: "none" /* Internet Explorer 10+ */,
+        }}
+      >
+        {/* User Profile Section */}
+        <Link
+          to="/settings"
+          className="flex items-center gap-4 p-4 mb-6 bg-gradient-to-r from-darkGray via-customGray to-darkGray  bg-opacity-20 rounded-2xl hover:from-yellow-400 hover:to-orange-400 hover:bg-opacity-30 transition-all duration-300 group"
+        >
+          <div className="relative">
+            <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl border-3 border-gradient-to-r from-yellow-400 to-orange-400 overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
+              <img
+                src={avatar ? avatar : "default-user.jpg"}
+                alt={fullname || "User"}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
           </div>
-          <span className="ml-2 text-lg font-semibold hidden md:block">
-            {fullname ? fullname : fullName}
-          </span>
+          <div className="hidden md:block">
+            <p className="text-lg font-bold text-beige group-hover:text-yellow-300 transition-colors duration-300">
+              {fullname || fullName || "User"}
+            </p>
+            <p className="text-sm text-gray-400">View Profile</p>
+          </div>
         </Link>
 
-        <NavLink
-          to="/academics/academics-hero"
-          className={({ isActive }) =>
-            `flex items-center space-x-2 p-2 w-full rounded-lg 
-            ${isActive ? "bg-yellow-400 text-black" : "hover:bg-customGray"}`
-          }
-        >
-          <FaBookOpen className="text-xl" />
-          <span className="hidden md:block">Teaching & Academics</span>
-        </NavLink>
+        {/* Navigation Items */}
+        <div className="space-y-2">
+          {navigationItems.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <NavLink
+                key={index}
+                to={item.to}
+                className={({ isActive }) =>
+                  `flex items-center gap-4 p-3 rounded-xl font-medium transition-all duration-300 group ${
+                    isActive
+                      ? `bg-gradient-to-r ${item.gradient} text-white shadow-lg scale-105`
+                      : "text-beige hover:bg-gray-700 hover:bg-opacity-50 hover:scale-105"
+                  }`
+                }
+              >
+                <div
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300`}
+                >
+                  <IconComponent className="text-xl" />
+                </div>
+                <span className="hidden md:block text-sm font-semibold">
+                  {item.label}
+                </span>
+              </NavLink>
+            );
+          })}
+        </div>
 
-        <NavLink
-          to="/development/development-hero"
-          className={({ isActive }) =>
-            `flex items-center space-x-2 p-2 w-full rounded-lg 
-            ${isActive ? "bg-yellow-400 text-black" : "hover:bg-customGray"}`
-          }
-        >
-          <MdOutlineDeveloperMode className="text-xl" />
-          <span className="hidden md:block">Development</span>
-        </NavLink>
-
-        <NavLink
-          to="/design/design-hero"
-          className={({ isActive }) =>
-            `flex items-center space-x-2 p-2 w-full rounded-lg 
-            ${isActive ? "bg-yellow-400 text-black" : "hover:bg-customGray"}`
-          }
-        >
-          <SiCssdesignawards className="text-xl" />
-          <span className="hidden md:block">Design</span>
-        </NavLink>
-
-        <NavLink
-          to="/marketing/marketing-hero"
-          className={({ isActive }) =>
-            `flex items-center space-x-2 p-2 w-full rounded-lg 
-            ${isActive ? "bg-yellow-400 text-black" : "hover:bg-customGray"}`
-          }
-        >
-          <SiGooglemarketingplatform className="text-xl" />
-          <span className="hidden md:block">Marketing</span>
-        </NavLink>
-
-        <NavLink
-          to="/finance/finance-hero"
-          className={({ isActive }) =>
-            `flex items-center space-x-2 p-2 w-full rounded-lg 
-            ${isActive ? "bg-yellow-400 text-black" : "hover:bg-customGray"}`
-          }
-        >
-          <MdOutlineAccountBalanceWallet className="text-xl" />
-          <span className="hidden md:block">Accounting & Finance</span>
-        </NavLink>
-
-        <NavLink
-          to="/business/business-hero"
-          className={({ isActive }) =>
-            `flex items-center space-x-2 p-2 w-full rounded-lg 
-            ${isActive ? "bg-yellow-400 text-black" : "hover:bg-customGray"}`
-          }
-        >
-          <MdOutlineBusinessCenter className="text-xl" />
-          <span className="hidden md:block">Business</span>
-        </NavLink>
-
-        <NavLink
-          to="/fitness/fitness-hero"
-          className={({ isActive }) =>
-            `flex items-center space-x-2 p-2 w-full rounded-lg 
-            ${isActive ? "bg-yellow-400 text-black" : "hover:bg-customGray"}`
-          }
-        >
-          <IoMdFitness className="text-xl" />
-          <span className="hidden md:block">Health & Fitness</span>
-        </NavLink>
-
-        <button
-          className="bg-red-700 text-white flex items-center gap-2 p-2 rounded-lg w-full hover:bg-red-900 transition duration-300"
-          onClick={logout}
-        >
-          <CiLogout className="text-xl" />
-          <span className="hidden md:block">Logout</span>
-        </button>
+        {/* Bottom Decoration */}
+        <div className="hidden md:block pt-6">
+          <div className="bg-gradient-to-r from-yellow-500 bg-opacity-20 to-orange-500 bg-opacity-20 rounded-2xl p-4 text-center">
+            <FaUserCircle className="text-3xl text-yellow-400 mx-auto mb-2" />
+            <p className="text-xs text-white font-medium">Learning Platform</p>
+            <p className="text-xs text-gray-50">Expand your knowledge</p>
+          </div>
+        </div>
       </nav>
     </div>
   );

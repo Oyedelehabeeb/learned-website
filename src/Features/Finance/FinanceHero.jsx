@@ -15,7 +15,7 @@ function FinanceHero() {
     {
       title: "Cryptocurrency & Blockchain",
       description:
-        "Master digital currencies and blockchain technology fundamentals",
+        "Master digital currencies and blockchain technology fundamentals for modern investing",
       icon: FaBitcoin,
       path: "/finance/cryptocurrency-blockchain",
       gradient: "from-yellow-500 to-orange-500",
@@ -25,21 +25,32 @@ function FinanceHero() {
     {
       title: "Investing & Trading",
       description:
-        "Learn investment strategies and trading techniques for wealth building",
+        "Learn investment strategies and trading techniques for successful wealth building and comprehensive portfolio management",
       icon: FaChartLine,
       path: "/finance/investing-trading",
       gradient: "from-green-500 to-emerald-500",
       hoverGradient: "from-green-600 to-emerald-600",
-      topics: ["Stock Analysis", "Portfolio Management", "Risk Assessment"],
+      topics: [
+        "Stock Analysis",
+        "Portfolio Management",
+        "Risk Assessment",
+        "Market Research",
+      ],
     },
     {
       title: "Accounting & Bookkeeping",
-      description: "Master financial record-keeping and accounting principles",
+      description:
+        "Master financial record-keeping and accounting principles for business success",
       icon: FaBook,
       path: "/finance/accounting-bookkeeping",
       gradient: "from-blue-500 to-indigo-500",
       hoverGradient: "from-blue-600 to-indigo-600",
-      topics: ["Financial Statements", "Tax Preparation", "QuickBooks"],
+      topics: [
+        "Financial Statements",
+        "Tax Preparation",
+        "QuickBooks",
+        "Budgeting",
+      ],
     },
   ];
 
