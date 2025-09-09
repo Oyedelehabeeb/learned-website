@@ -156,7 +156,7 @@ function DigitalMarketing() {
         </div>
 
         {/* Pagination */}
-        <div className="mb-16">
+        <div className="mb-16 flex justify-center">
           <Pagination count={count} />
         </div>
 

@@ -123,16 +123,10 @@ function Management() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Courses Section */}
         <div className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <div className="text-center flex-1">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Available Courses ({count})
-              </h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-                Professional management and leadership courses for all career
-                levels
-              </p>
-            </div>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-800">
+              Available Courses ({count})
+            </h2>
             <CourseOperations />
           </div>
 

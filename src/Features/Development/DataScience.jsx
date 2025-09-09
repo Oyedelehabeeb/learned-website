@@ -138,18 +138,10 @@ function DataScience() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Courses Section */}
         <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-800">
               Available Courses ({count})
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Comprehensive data science courses covering machine learning, AI,
-              and statistical analysis
-            </p>
-          </div>
-
-          {/* Course Operations */}
-          <div className="flex justify-end mb-8">
             <CourseOperations />
           </div>
 
