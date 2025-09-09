@@ -1,4 +1,11 @@
-import { FaShoppingCart } from "react-icons/fa"; // Cart icon
+import {
+  FaShoppingCart,
+  FaShoppingBag,
+  FaCreditCard,
+  FaLock,
+  FaCheckCircle,
+  FaStar,
+} from "react-icons/fa"; // Cart icon
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "./../../Ui/Loader";
 import CartItems from "./CartItems";
@@ -78,51 +85,142 @@ function Cart() {
 
   if (!cart.length) {
     return (
-      <div className="flex flex-col items-center p-24 h-screen">
-        <h2 className="text-2xl font-semibold">Your cart is empty</h2>
-        <Link to="/home" className="mt-4 text-blue-600 hover:underline">
-          Continue Shopping
-        </Link>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-6">
+        <div className="text-center max-w-md mx-auto">
+          <div className="w-32 h-32 mx-auto mb-8 bg-gradient-to-r from-customGray to-darkGray rounded-full flex items-center justify-center shadow-2xl">
+            <FaShoppingBag className="text-white text-4xl" />
+          </div>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">
+            Your Cart is Empty
+          </h2>
+          <p className="text-gray-600 mb-8 leading-relaxed">
+            Looks like you haven't added any courses to your cart yet. Discover
+            amazing courses and start your learning journey!
+          </p>
+          <Link
+            to="/home"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-customGray to-darkGray text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <FaShoppingCart className="text-lg" />
+            Continue Shopping
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <>
-      <div className="text-3xl font-bold text-center flex items-center justify-center space-x-4">
-        <FaShoppingCart className="text-4xl" />
-        <span>Cart</span>
-      </div>
-      <div className="max-w-4xl mx-auto pb-6">
-        {cart.map((item) => (
-          <CartItems key={item.id} item={item} />
-        ))}
-        <div className="mt-8 p-4 border rounded-md shadow-md">
-          <h2 className="text-xl font-bold">Total: ₦{totalPrice.toFixed(2)}</h2>
-          <button
-            disabled={cart.length === 0}
-            className={`mt-4 w-full px-4 py-3 rounded-md ${
-              cart.length === 0
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-green-600 hover:bg-green-700"
-            } text-white`}
-            onClick={() => {
-              handleFlutterPayment({
-                callback: (response) => {
-                  handlePaymentResponse(response);
-                  closePaymentModal();
-                },
-                onClose: () => {
-                  console.log("Payment modal closed");
-                },
-              });
-            }}
-          >
-            Proceed to Checkout
-          </button>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-customGray to-darkGray rounded-2xl mb-6 shadow-xl">
+            <FaShoppingCart className="text-white text-2xl" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Shopping Cart
+          </h1>
+          <p className="text-xl text-gray-600">
+            {cart.length} {cart.length === 1 ? "course" : "courses"} in your
+            cart
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Cart Items Section */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                <FaShoppingBag className="text-customGray" />
+                Course Items
+              </h2>
+              <div className="space-y-4">
+                {cart.map((item, index) => (
+                  <CartItems key={item.id} item={item} index={index} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Order Summary Section */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sticky top-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
+                <FaCreditCard className="text-customGray" />
+                Order Summary
+              </h2>
+
+              {/* Order Details */}
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">
+                    Subtotal ({cart.length} items)
+                  </span>
+                  <span className="font-semibold">
+                    ₦{totalPrice.toFixed(2)}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-600">Discount</span>
+                  <span className="font-semibold text-green-600">-₦0.00</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-t-2 border-gray-200">
+                  <span className="text-xl font-bold text-gray-800">Total</span>
+                  <span className="text-2xl font-bold text-customGray">
+                    ₦{totalPrice.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Security Badge */}
+              <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
+                <div className="flex items-center gap-3 text-green-700">
+                  <FaLock className="text-lg" />
+                  <div>
+                    <p className="font-semibold">Secure Payment</p>
+                    <p className="text-sm text-green-600">
+                      Your payment information is protected
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Checkout Button */}
+              <button
+                disabled={cart.length === 0}
+                className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${
+                  cart.length === 0
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 hover:shadow-xl hover:-translate-y-1"
+                } flex items-center justify-center gap-3`}
+                onClick={() => {
+                  handleFlutterPayment({
+                    callback: (response) => {
+                      handlePaymentResponse(response);
+                      closePaymentModal();
+                    },
+                    onClose: () => {
+                      console.log("Payment modal closed");
+                    },
+                  });
+                }}
+              >
+                <FaCheckCircle className="text-xl" />
+                Proceed to Checkout
+              </button>
+
+              {/* Trust Indicators */}
+              <div className="mt-6 text-center">
+                <div className="flex items-center justify-center gap-2 text-gray-500 text-sm">
+                  <FaStar className="text-yellow-400" />
+                  <span>30-day money-back guarantee</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
