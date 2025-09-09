@@ -1,45 +1,182 @@
 /* eslint-disable react/no-unescaped-entities */
 import { NavLink } from "react-router-dom";
-import { FaPaintBrush, FaLaptopCode, FaPenNib } from "react-icons/fa";
+import {
+  FaPaintBrush,
+  FaLaptopCode,
+  FaPenNib,
+  FaPalette,
+  FaEye,
+  FaStar,
+  FaArrowRight,
+  FaMagic,
+} from "react-icons/fa";
 
 function DesignHero() {
+  const designPaths = [
+    {
+      title: "Web Design",
+      description:
+        "Create stunning, responsive websites with modern design principles",
+      icon: FaLaptopCode,
+      path: "/design/web-design",
+      gradient: "from-cyan-500 to-blue-500",
+      hoverGradient: "from-cyan-600 to-blue-600",
+      skills: ["HTML/CSS", "Responsive Design", "UI Frameworks"],
+    },
+    {
+      title: "Graphics Design",
+      description:
+        "Master visual communication through compelling graphic design",
+      icon: FaPaintBrush,
+      path: "/design/graphics-design-illustration",
+      gradient: "from-pink-500 to-rose-500",
+      hoverGradient: "from-pink-600 to-rose-600",
+      skills: ["Adobe Creative", "Branding", "Visual Identity"],
+    },
+    {
+      title: "UX Design",
+      description:
+        "Design intuitive user experiences that delight and engage users",
+      icon: FaPenNib,
+      path: "/design/user-experience-design",
+      gradient: "from-purple-500 to-indigo-500",
+      hoverGradient: "from-purple-600 to-indigo-600",
+      skills: ["User Research", "Prototyping", "Usability Testing"],
+    },
+  ];
+
   return (
-    <div className="relative bg-gradient-to-r from-customGray to-darkGray text-white py-16 px-8 text-center">
-      <div className="relative">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6 drop-shadow-md">
-          Explore the World of Design
-        </h1>
-        <p className="text-lg sm:text-xl mb-10 max-w-2xl mx-auto drop-shadow-md">
-          Unleash your creativity with our courses in Web Design, Graphics
-          Design, and UX Design. Whether you're building websites, designing
-          captivating visuals, or improving user experiences, we have something
-          for you.
-        </p>
+    <div className="relative min-h-screen bg-gradient-to-br from-customGray via-darkGray to-customGray overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-pink-500 bg-opacity-10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500 bg-opacity-10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500 bg-opacity-5 rounded-full blur-3xl"></div>
+      </div>
 
-        <div className="flex flex-col justify-center gap-4 mt-8">
-          <NavLink
-            to="/design/web-design"
-            className="group bg-yellow-400 text-gray-800 px-6 py-4 rounded-lg flex items-center space-x-3 transform hover:scale-105 transition duration-300 ease-in-out"
-          >
-            <FaLaptopCode className="text-2xl group-hover:animate-bounce" />
-            <span className="font-semibold">Web Design</span>
-          </NavLink>
+      {/* Main content */}
+      <div className="relative container mx-auto px-6 py-16">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-customGray to-darkGray rounded-2xl mb-8 shadow-2xl">
+            <FaPalette className="text-white text-3xl" />
+          </div>
 
-          <NavLink
-            to="/design/graphics-design-illustration"
-            className="group bg-yellow-400 text-gray-800 px-6 py-4 rounded-lg flex items-center space-x-3 transform hover:scale-105 transition duration-300 ease-in-out"
-          >
-            <FaPaintBrush className="text-2xl group-hover:animate-bounce" />
-            <span className="font-semibold">Graphics Design</span>
-          </NavLink>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            Unleash Your
+            <span className="block bg-gradient-to-r from-pink-400 via-cyan-500 to-purple-400 bg-clip-text text-transparent mt-2">
+              Creative Vision
+            </span>
+          </h1>
 
-          <NavLink
-            to="/design/user-experience-design"
-            className="group bg-yellow-400 text-gray-800 px-6 py-4 rounded-lg flex items-center space-x-3 transform hover:scale-105 transition duration-300 ease-in-out"
-          >
-            <FaPenNib className="text-2xl group-hover:animate-bounce" />
-            <span className="font-semibold">UX Design</span>
-          </NavLink>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+            Transform ideas into stunning visuals with our comprehensive design
+            courses. From web interfaces to brand identities, master the art of
+            visual storytelling.
+          </p>
+
+          <div className="flex items-center justify-center gap-3 text-yellow-400 mb-12">
+            <FaStar className="text-xl" />
+            <span className="text-lg font-medium text-white">
+              Choose Your Creative Path
+            </span>
+            <FaStar className="text-xl" />
+          </div>
+        </div>
+
+        {/* Design Paths Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {designPaths.map((path, index) => {
+            const IconComponent = path.icon;
+            return (
+              <NavLink key={index} to={path.path} className="group block">
+                <div
+                  className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${path.gradient} p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105`}
+                >
+                  {/* Background pattern */}
+                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-white bg-opacity-10 rounded-full -translate-y-20 translate-x-20"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-white bg-opacity-5 rounded-full translate-y-16 -translate-x-16"></div>
+
+                  {/* Content */}
+                  <div className="relative z-10">
+                    {/* Icon and title */}
+                    <div className="text-center mb-6">
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-2xl group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm mb-4">
+                        <IconComponent className="text-white text-2xl" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        {path.title}
+                      </h3>
+                      <div className="flex items-center justify-center gap-2 text-white text-opacity-80">
+                        <FaMagic className="text-sm" />
+                        <span className="text-sm font-medium">
+                          Create & Design
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-white text-opacity-90 mb-6 leading-relaxed text-center">
+                      {path.description}
+                    </p>
+
+                    {/* Skills */}
+                    <div className="flex flex-wrap justify-center gap-2 mb-6">
+                      {path.skills.map((skill, skillIndex) => (
+                        <span
+                          key={skillIndex}
+                          className="px-3 py-1 bg-white bg-opacity-20 rounded-full text-white text-sm font-medium backdrop-blur-sm"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex items-center justify-center gap-2 text-white font-semibold group-hover:text-yellow-200 transition-colors duration-300">
+                      <span>Explore Courses</span>
+                      <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Hover effect overlay */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${path.hoverGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}
+                  ></div>
+                </div>
+              </NavLink>
+            );
+          })}
+        </div>
+
+        {/* Bottom CTA Section */}
+        <div className="text-center mt-20">
+          <div className="inline-block bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-20">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ready to Bring Your Ideas to Life?
+            </h3>
+            <p className="text-gray-300 mb-6 max-w-md mx-auto">
+              Join thousands of designers who have transformed their creative
+              vision into reality with our expert-led courses.
+            </p>
+            <div className="flex items-center justify-center gap-6 text-white">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-pink-400">30K+</div>
+                <div className="text-sm text-gray-400">Designers</div>
+              </div>
+              <div className="w-px h-12 bg-white bg-opacity-20"></div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-cyan-400">120+</div>
+                <div className="text-sm text-gray-400">Design Courses</div>
+              </div>
+              <div className="w-px h-12 bg-white bg-opacity-20"></div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-400">97%</div>
+                <div className="text-sm text-gray-400">Portfolio Success</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
