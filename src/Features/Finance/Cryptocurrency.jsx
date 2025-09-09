@@ -1,6 +1,16 @@
 import { Link, useSearchParams } from "react-router-dom";
 import Loader from "../../Ui/Loader";
 import { FiArrowLeft } from "react-icons/fi";
+import {
+  FaBitcoin,
+  FaChartLine,
+  FaShieldAlt,
+  FaUsers,
+  FaGraduationCap,
+  FaStar,
+  FaBookOpen,
+  FaCoins,
+} from "react-icons/fa";
 import CourseOperations from "../../Ui/CourseOperations";
 import CourseLists from "../../Ui/CourseLists";
 import FeaturedCourse from "../../Ui/FeaturedCourse";
@@ -32,57 +42,143 @@ function Cryptocurrency() {
     (a, b) => (a[field] - b[field]) * modifier
   );
 
+  const cryptoFeatures = [
+    {
+      icon: FaBitcoin,
+      title: "Blockchain Technology",
+      desc: "Master blockchain fundamentals and cryptocurrency mechanics",
+    },
+    {
+      icon: FaChartLine,
+      title: "Trading Strategies",
+      desc: "Learn professional crypto trading and market analysis",
+    },
+    {
+      icon: FaShieldAlt,
+      title: "Security & Wallets",
+      desc: "Understand crypto security and wallet management",
+    },
+    {
+      icon: FaUsers,
+      title: "DeFi & NFTs",
+      desc: "Explore decentralized finance and digital assets",
+    },
+  ];
+
   if (isLoading1 || isLoading2 || isLoading3) return <Loader />;
 
   return (
-    <div className="min-h-screen p-6 space-y-10">
-      {/* HEADER */}
-      <div className="flex items-center justify-between">
-        <Link
-          to="/finance/finance-hero"
-          className="p-2 bg-gray-100 rounded-md hover:bg-gray-300 transition"
-        >
-          <FiArrowLeft />
-        </Link>
-        <h1 className="font-semibold text-xs md:text-3xl">
-          Cryptocurrency Courses ({count})
-        </h1>
-        <div className="space-x-4 flex">
-          <CourseOperations />
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 text-white py-20 px-6">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <Link
+              to="/finance/finance-hero"
+              className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30 transition-all duration-300"
+            >
+              <FiArrowLeft className="text-xl" />
+              <span className="hidden sm:inline">Back to Finance</span>
+            </Link>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <FaBitcoin className="text-3xl text-yellow-300" />
+                <span className="text-yellow-200 font-medium">
+                  Cryptocurrency & Blockchain
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                Master Digital
+                <br />
+                <span className="text-yellow-300">Currency Trading</span>
+              </h1>
+              <p className="text-xl text-orange-100 max-w-xl">
+                Learn cryptocurrency trading, blockchain technology, and digital
+                asset management from industry experts.
+              </p>
+            </div>
+
+            {/* Right Content - Features Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {cryptoFeatures.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                >
+                  <item.icon className="text-3xl text-yellow-200 mb-3" />
+                  <h3 className="font-semibold text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-orange-200 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* COURSES GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-5">
-        {sortedCourses?.map((course, index) => (
-          <CourseLists course={course} key={index} />
-        ))}
-      </div>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Courses Section */}
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <div className="text-center flex-1">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Available Courses ({count})
+              </h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+                Comprehensive cryptocurrency and blockchain courses for all
+                skill levels
+              </p>
+            </div>
+            <CourseOperations />
+          </div>
 
-      {/* PAGINATION */}
-      <div>
-        <Pagination count={count} />
-      </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {sortedCourses?.map((course, index) => (
+              <CourseLists course={course} key={index} />
+            ))}
+          </div>
 
-      <div>
-        {featuredCryptocurrency ? (
-          <FeaturedCourse featured={featuredCryptocurrency} />
-        ) : (
-          <p>No featured cryptocurrency available.</p>
-        )}
-      </div>
-      <div>
-        <h1 className="text-2xl font-bold mb-4 mt-10">Popular Instructors</h1>
-        <div className="bg-white p-6 rounded-lg shadow-md grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 gap-y-11">
-          {cryptoInstructors?.map((instructor, index) => (
-            <InstructorsLists instructor={instructor} key={index} />
-          ))}
+          {/* Courses Pagination */}
+          <div className="mt-12 flex justify-center">
+            <Pagination count={count} />
+          </div>
         </div>
-      </div>
 
-      {/* PAGINATION */}
-      <div>
-        <InstructorsPagination count={count1} />
+        {/* Featured Course */}
+        <div className="mb-16">
+          {featuredCryptocurrency ? (
+            <FeaturedCourse featured={featuredCryptocurrency} />
+          ) : (
+            <p>No featured cryptocurrency course available.</p>
+          )}
+        </div>
+
+        {/* Instructors Section */}
+        <div className="bg-gradient-to-r from-yellow-600/10 to-orange-600/10 rounded-3xl p-8">
+          <div className="flex items-center gap-3 mb-8">
+            <FaCoins className="text-3xl text-yellow-600" />
+            <h2 className="text-3xl font-bold text-gray-800">
+              Popular Instructors
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {cryptoInstructors?.map((instructor, index) => (
+              <InstructorsLists instructor={instructor} key={index} />
+            ))}
+          </div>
+        </div>
+
+        {/* Instructors Pagination */}
+        <div className="mt-8 flex justify-center">
+          <InstructorsPagination count={count1} />
+        </div>
       </div>
     </div>
   );
