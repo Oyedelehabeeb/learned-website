@@ -167,7 +167,7 @@ function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-800 to-gray-900">
+      <section className="py-16 bg-darkGray">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="text-white">

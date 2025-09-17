@@ -35,8 +35,8 @@ function Header() {
         <div className="flex justify-between items-center h-full">
           {/* Logo Section */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-darkGray via-customGray to-darkGray rounded-xl flex items-center justify-center">
-              <FaGraduationCap className="text-white text-xl" />
+            <div className="w-10 h-10 bg-darkGray to-darkGray rounded-xl flex items-center justify-center">
+              <FaGraduationCap className="text-beige text-xl" />
             </div>
             <NavLink
               to="/home"

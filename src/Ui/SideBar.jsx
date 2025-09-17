@@ -78,7 +78,7 @@ function SideBar() {
         {/* User Profile Section */}
         <Link
           to="/settings"
-          className="flex items-center gap-4 p-4 mb-6 bg-gradient-to-r from-darkGray via-customGray to-darkGray  bg-opacity-20 rounded-2xl hover:from-yellow-400 hover:to-orange-400 hover:bg-opacity-30 transition-all duration-300 group"
+          className="flex items-center gap-4 p-4 mb-6 bg-darkGray rounded-2xl hover:from-yellow-400 hover:to-orange-400 hover:bg-opacity-30 transition-all duration-300 group"
         >
           <div className="relative">
             <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl border-3 border-gradient-to-r from-yellow-400 to-orange-400 overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
@@ -91,7 +91,7 @@ function SideBar() {
             <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
           </div>
           <div className="hidden md:block">
-            <p className="text-lg font-bold text-beige group-hover:text-yellow-300 transition-colors duration-300">
+            <p className="text-lg font-bold text-beige group-hover:text-beige transition-colors duration-300">
               {fullname || fullName || "User"}
             </p>
             <p className="text-sm text-gray-400">View Profile</p>
