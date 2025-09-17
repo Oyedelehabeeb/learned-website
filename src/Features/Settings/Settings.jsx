@@ -61,7 +61,7 @@ function Settings() {
           {/* Profile Information Card */}
           <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-8 border border-white border-opacity-20 shadow-2xl">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-darkGray rounded-xl flex items-center justify-center">
                 <FaUser className="text-white text-xl" />
               </div>
               <h2 className="text-2xl font-bold text-beige">
@@ -102,7 +102,7 @@ function Settings() {
                         type="file"
                         accept="image/*"
                         onChange={(e) => setAvatar(e.target.files[0])}
-                        className="block w-full text-sm text-gray-400 file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-darkGray file:to-customGray file:text-white hover:file:from-yellow-700 hover:file:to-yellow-800 file:cursor-pointer file:transition-all file:duration-300"
+                        className="block w-full text-sm text-gray-400 file:mr-4 file:py-3 file:px-6 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-darkGray file:text-white hover:file:bg-customGray file:cursor-pointer file:transition-all file:duration-300"
                       />
                     </label>
                   </div>
