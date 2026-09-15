@@ -11,7 +11,7 @@ export function useDataScienceInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: dataScienceInstructors, count } = {}, isLoading } =
+  const { data: { data: dataScienceInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["data-science-instructors", pageInst],
       queryFn: () => getDataScienceInstructors({ pageInst }),
@@ -29,5 +29,5 @@ export function useDataScienceInstructors() {
       queryFn: () => getDataScienceInstructors({ pageInst: pageInst - 1 }),
     });
 
-  return { dataScienceInstructors, isLoading, count };
+  return { dataScienceInstructors, isLoading, count, error, refetch };
 }

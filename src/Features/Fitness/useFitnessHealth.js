@@ -9,7 +9,7 @@ export function useFitnessHealth() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: fitnessHealth, count } = {}, isLoading } = useQuery({
+  const { data: { data: fitnessHealth, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["fitness-Health", page],
     queryFn: () => getFitnessCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useFitnessHealth() {
       queryFn: () => getFitnessCourses({ page: page - 1 }),
     });
 
-  return { fitnessHealth, count, isLoading };
+  return { fitnessHealth, count, isLoading, error, refetch };
 }

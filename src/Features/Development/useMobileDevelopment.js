@@ -9,7 +9,7 @@ export function useMobileDevelopment() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: mobileDevelopment, count } = {}, isLoading } = useQuery(
+  const { data: { data: mobileDevelopment, count } = {}, isLoading, error, refetch } = useQuery(
     {
       queryKey: ["mobile-development", page],
       queryFn: () => getMobileDevelopmentCourses({ page }),
@@ -30,5 +30,5 @@ export function useMobileDevelopment() {
       queryFn: () => getMobileDevelopmentCourses({ page: page - 1 }),
     });
 
-  return { mobileDevelopment, count, isLoading };
+  return { mobileDevelopment, count, isLoading, error, refetch };
 }

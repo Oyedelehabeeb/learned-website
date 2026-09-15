@@ -2,7 +2,7 @@
 function EntrepreneurInstructorsList({ instructor }) {
   const { name, title, rating, avatarUrl } = instructor;
   return (
-    <div className="flex gap-4 justify-between items-center border rounded-lg shadow hover:shadow-lg p-4 mt-[-30px]">
+    <div className="flex gap-4 justify-between items-center border rounded-lg shadow hover:shadow-sm p-4 mt-[-30px]">
       <img
         src={avatarUrl}
         alt={name}

@@ -7,7 +7,7 @@ import {
 
 function Footer() {
   return (
-    <footer className="bg-darkGray text-beige">
+    <footer className="bg-canvas text-ink">
       <div className="max-w-2xl md:max-w-4xl mx-auto px-4">
         <p className="text-sm mb-4">
           &copy; {new Date().getFullYear()} Your E-Learning Platform. All rights
@@ -18,7 +18,7 @@ function Footer() {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-yellow-400 transition duration-300"
+            className="hover:text-forest transition duration-300"
           >
             <FaFacebookF size={20} />
           </a>
@@ -26,7 +26,7 @@ function Footer() {
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-yellow-400 transition duration-300"
+            className="hover:text-forest transition duration-300"
           >
             <FaTwitter size={20} />
           </a>
@@ -34,7 +34,7 @@ function Footer() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-yellow-400 transition duration-300"
+            className="hover:text-forest transition duration-300"
           >
             <FaLinkedinIn size={20} />
           </a>
@@ -42,7 +42,7 @@ function Footer() {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-yellow-400 transition duration-300"
+            className="hover:text-forest transition duration-300"
           >
             <FaInstagram size={20} />
           </a>

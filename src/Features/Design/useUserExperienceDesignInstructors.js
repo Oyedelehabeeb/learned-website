@@ -13,7 +13,7 @@ export function useUserExperienceDesignInstructors() {
 
   const {
     data: { data: userExperienceDesignInstructors, count } = {},
-    isLoading,
+    isLoading, error, refetch
   } = useQuery({
     queryKey: ["user-experience-design-instructors", pageInst],
     queryFn: () => getUseExperienceDesignInstructors({ pageInst }),
@@ -34,5 +34,5 @@ export function useUserExperienceDesignInstructors() {
       queryFn: () =>
         getUseExperienceDesignInstructors({ pageInst: pageInst - 1 }),
     });
-  return { userExperienceDesignInstructors, count, isLoading };
+  return { userExperienceDesignInstructors, count, isLoading, error, refetch };
 }

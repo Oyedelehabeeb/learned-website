@@ -11,7 +11,7 @@ export function useInvestingInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: investingInstructors, count } = {}, isLoading } =
+  const { data: { data: investingInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["investing-instructors", pageInst],
       queryFn: () => getInvestingInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useInvestingInstructors() {
       queryKey: ["investing-instructors", pageInst - 1],
       queryFn: () => getInvestingInstructors({ pageInst: pageInst - 1 }),
     });
-  return { investingInstructors, count, isLoading };
+  return { investingInstructors, count, isLoading, error, refetch };
 }

@@ -11,7 +11,7 @@ export function useMedicalCodingInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: medicalCodingInstructors, count } = {}, isLoading } =
+  const { data: { data: medicalCodingInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["medical-coding-instructors", pageInst],
       queryFn: () => getClinicalResearchInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useMedicalCodingInstructors() {
       queryKey: ["medical-coding-instructors", pageInst - 1],
       queryFn: () => getClinicalResearchInstructors({ pageInst: pageInst - 1 }),
     });
-  return { medicalCodingInstructors, count, isLoading };
+  return { medicalCodingInstructors, count, isLoading, error, refetch };
 }

@@ -1,24 +1,5 @@
 import { Link } from "react-router-dom";
-
-const PageNotFound = () => {
-  return (
-    <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
-      <h1 className="text-6xl font-bold text-red-600">404</h1>
-      <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-        Oops! Page not found.
-      </h2>
-      <p className="text-gray-600 mb-8 text-center max-w-md">
-        The page you're looking for might have been removed, had its name
-        changed, or is temporarily unavailable.
-      </p>
-      <Link
-        to="/"
-        className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-      >
-        Go Back Home
-      </Link>
-    </div>
-  );
-};
-
-export default PageNotFound;
+import { FiArrowRight } from "react-icons/fi";
+export default function PageNotFound() {
+  return <div className="empty-state"><span className="eyebrow">404 · A SMALL DETOUR</span><h1>Let’s get you back on track.</h1><p>The page you’re looking for couldn’t be found.</p><Link className="btn btn-primary" to="/">Back to home <FiArrowRight /></Link></div>;
+}

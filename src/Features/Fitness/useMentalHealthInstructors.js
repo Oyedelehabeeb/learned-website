@@ -11,7 +11,7 @@ export function useMentalHealthInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: mentalHealthInstructors, count } = {}, isLoading } =
+  const { data: { data: mentalHealthInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["mental-health-instructors", pageInst],
       queryFn: () => getMentalHealthInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useMentalHealthInstructors() {
       queryKey: ["mental-health-instructors", pageInst - 1],
       queryFn: () => getMentalHealthInstructors({ pageInst: pageInst - 1 }),
     });
-  return { mentalHealthInstructors, count, isLoading };
+  return { mentalHealthInstructors, count, isLoading, error, refetch };
 }

@@ -10,7 +10,7 @@ export function useWebDevelopment() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: webDevelopment, count } = {}, isLoading } = useQuery({
+  const { data: { data: webDevelopment, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["web-development", page],
     queryFn: () => getWebDevelopmentCourses({ page }),
   });
@@ -29,5 +29,5 @@ export function useWebDevelopment() {
       queryFn: () => getWebDevelopmentCourses({ page: page - 1 }),
     });
 
-  return { webDevelopment, count, isLoading };
+  return { webDevelopment, count, isLoading, error, refetch };
 }

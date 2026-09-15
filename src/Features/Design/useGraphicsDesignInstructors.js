@@ -11,7 +11,7 @@ export function useGraphicsDesignInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: graphicsDesignInstructors, count } = {}, isLoading } =
+  const { data: { data: graphicsDesignInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["graphics-experience-design-instructors", pageInst],
       queryFn: () => getGraphicDesignInstructors({ pageInst }),
@@ -30,5 +30,5 @@ export function useGraphicsDesignInstructors() {
       queryKey: ["graphics-design-instructors", pageInst - 1],
       queryFn: () => getGraphicDesignInstructors({ pageInst: pageInst - 1 }),
     });
-  return { graphicsDesignInstructors, count, isLoading };
+  return { graphicsDesignInstructors, count, isLoading, error, refetch };
 }

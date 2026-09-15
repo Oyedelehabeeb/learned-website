@@ -1,30 +1,7 @@
-import { NavLink } from "react-router-dom";
-
 /* eslint-disable react/prop-types */
-function InstructorsLists({ instructor }) {
+import { Link } from "react-router-dom";
+import { FiStar } from "react-icons/fi";
+export default function InstructorsLists({ instructor }) {
   const { name, title, rating, avatarUrl, instructorId } = instructor;
-  return (
-    <NavLink
-      to={`/instructors/${instructorId}`}
-      className="flex gap-x-4 justify-between items-center border rounded-lg shadow hover:shadow-lg p-4"
-    >
-      <img
-        src={avatarUrl}
-        alt={name}
-        className="w-20 h-20 object-cover rounded-full"
-      />
-      <div className="">
-        <h3 className="text-xl font-semibold mt-3">{name}</h3>
-        <p className="text-gray-600">{title}</p>
-        <p className="">
-          Rating:{" "}
-          <span className="text-gray-600 font-bold">
-            {rating} <span>⭐</span>
-          </span>
-        </p>
-      </div>
-    </NavLink>
-  );
+  return <Link to={`/instructors/${instructorId}`} className="instructor-card"><img src={avatarUrl} alt="" loading="lazy" /><div><h3>{name}</h3><p>{title}</p><span className="course-rating"><FiStar />{rating}</span></div></Link>;
 }
-
-export default InstructorsLists;

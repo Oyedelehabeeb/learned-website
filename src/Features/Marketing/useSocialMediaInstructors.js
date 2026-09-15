@@ -13,7 +13,7 @@ export function useSocialMediaMarketingInstructors() {
 
   const {
     data: { data: socialMediaMarketingInstructors, count } = {},
-    isLoading,
+    isLoading, error, refetch
   } = useQuery({
     queryKey: ["social-media-marketing-instructors", pageInst],
     queryFn: () => getSocialMediaMarketingInstructors({ pageInst }),
@@ -33,5 +33,5 @@ export function useSocialMediaMarketingInstructors() {
         getSocialMediaMarketingInstructors({ pageInst: pageInst - 1 }),
     });
 
-  return { socialMediaMarketingInstructors, count, isLoading };
+  return { socialMediaMarketingInstructors, count, isLoading, error, refetch };
 }

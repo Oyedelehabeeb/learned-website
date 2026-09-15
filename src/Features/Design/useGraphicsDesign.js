@@ -9,7 +9,7 @@ export function useGraphicsDesign() {
   const [searchParams] = useSearchParams();
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: graphicsDesign, count } = {}, isLoading } = useQuery({
+  const { data: { data: graphicsDesign, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["web-design", page],
     queryFn: () => getGraphicsDesignCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useGraphicsDesign() {
       queryFn: () => getGraphicsDesignCourses({ page: page - 1 }),
     });
 
-  return { graphicsDesign, count, isLoading };
+  return { graphicsDesign, count, isLoading, error, refetch };
 }

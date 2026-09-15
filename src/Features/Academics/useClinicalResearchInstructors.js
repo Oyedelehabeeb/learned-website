@@ -11,7 +11,7 @@ export function useClinicalResearchInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: clinicalResearchInstructors, count } = {}, isLoading } =
+  const { data: { data: clinicalResearchInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["clinical-research-instructors", pageInst],
       queryFn: () => getClinicalResearchInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useClinicalResearchInstructors() {
       queryKey: ["clinical-research-instructors", pageInst - 1],
       queryFn: () => getClinicalResearchInstructors({ pageInst: pageInst - 1 }),
     });
-  return { clinicalResearchInstructors, count, isLoading };
+  return { clinicalResearchInstructors, count, isLoading, error, refetch };
 }

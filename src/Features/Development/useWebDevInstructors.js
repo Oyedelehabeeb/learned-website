@@ -11,7 +11,7 @@ export function useWebDevelopmentInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: webDevInstructors, count } = {}, isLoading } = useQuery(
+  const { data: { data: webDevInstructors, count } = {}, isLoading, error, refetch } = useQuery(
     {
       queryKey: ["web-development-instructors", pageInst],
       queryFn: () => getWebDevelopmentInstructors({ pageInst }),
@@ -31,5 +31,5 @@ export function useWebDevelopmentInstructors() {
       queryKey: ["web-development-instructors", pageInst - 1],
       queryFn: () => getWebDevelopmentInstructors({ pageInst: pageInst - 1 }),
     });
-  return { webDevInstructors, count, isLoading };
+  return { webDevInstructors, count, isLoading, error, refetch };
 }

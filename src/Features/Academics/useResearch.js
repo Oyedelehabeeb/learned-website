@@ -8,7 +8,7 @@ export function useResearch() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: research, count } = {}, isLoading } = useQuery({
+  const { data: { data: research, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["research", page],
     queryFn: () => getResearchPapersCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useResearch() {
       queryFn: () => getResearchPapersCourses({ page: page - 1 }),
     });
 
-  return { research, count, isLoading };
+  return { research, count, isLoading, error, refetch };
 }

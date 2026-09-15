@@ -2,7 +2,7 @@
 function WebDesignInstructorsList({ instructor }) {
   const { name, title, rating, avatarUrl } = instructor;
   return (
-    <div className="flex gap-4 justify-between items-center border rounded-lg shadow hover:shadow-lg p-4 mt-[-30px]">
+    <div className="flex gap-4 justify-between items-center border rounded-lg shadow hover:shadow-sm p-4 mt-[-30px]">
       <img
         src={avatarUrl}
         alt={name}
@@ -14,7 +14,7 @@ function WebDesignInstructorsList({ instructor }) {
         <p className="text-gray-600">
           Instructor rating:{" "}
           <span className="text-gray-600 font-bold">
-            {rating} <span className="text-yellow-500">★</span>
+            {rating} <span className="text-forest">★</span>
           </span>
         </p>
       </div>

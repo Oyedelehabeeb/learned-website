@@ -8,7 +8,7 @@ export function useCryptocurrency() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: cryptocurrency, count } = {}, isLoading } = useQuery({
+  const { data: { data: cryptocurrency, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["cryptocurrency", page],
     queryFn: () => getCryptocurrencyCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useCryptocurrency() {
       queryFn: () => getCryptocurrencyCourses({ page: page - 1 }),
     });
 
-  return { cryptocurrency, count, isLoading };
+  return { cryptocurrency, count, isLoading, error, refetch };
 }

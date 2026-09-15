@@ -8,7 +8,7 @@ export function useAnatomy() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: anatomy, count } = {}, isLoading } = useQuery({
+  const { data: { data: anatomy, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["anatomy", page],
     queryFn: () => getAnatomyCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useAnatomy() {
       queryFn: () => getAnatomyCourses({ page: page - 1 }),
     });
 
-  return { anatomy, count, isLoading };
+  return { anatomy, count, isLoading, error, refetch };
 }

@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 
-function ErrorFallBackComponent({ error, resetErrorBoundary }) {
+function ErrorFallBackComponent({ resetErrorBoundary }) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-darkGray text-white">
-      <h1 className="text-4xl font-bold mb-4">Oops! Something went wrong.</h1>
-      <p className="text-lg mb-8 text-red-400">{error.message}</p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-canvas text-ink">
+      <h1 className="text-3xl font-bold mb-4">Let’s try that again.</h1>
+      <p className="text-sm mb-8 text-muted">Something got in the way. Return home to start fresh.</p>
 
       <button
         onClick={resetErrorBoundary}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold"
+        className="btn btn-primary"
       >
-        Go back to Dashboard
+        Back to home
       </button>
     </div>
   );

@@ -11,7 +11,7 @@ export function useResearchPapersInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: researchInstructors, count } = {}, isLoading } =
+  const { data: { data: researchInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["research-instructors", pageInst],
       queryFn: () => getResearchPaperInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useResearchPapersInstructors() {
       queryKey: ["research-instructors", pageInst - 1],
       queryFn: () => getResearchPaperInstructors({ pageInst: pageInst - 1 }),
     });
-  return { researchInstructors, count, isLoading };
+  return { researchInstructors, count, isLoading, error, refetch };
 }

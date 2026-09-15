@@ -11,7 +11,7 @@ export function useNutritionInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: nutritionInstructors, count } = {}, isLoading } =
+  const { data: { data: nutritionInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["nutrition-instructors", pageInst],
       queryFn: () => getNutritionInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useNutritionInstructors() {
       queryKey: ["nutrition-instructors", pageInst - 1],
       queryFn: () => getNutritionInstructors({ pageInst: pageInst - 1 }),
     });
-  return { nutritionInstructors, count, isLoading };
+  return { nutritionInstructors, count, isLoading, error, refetch };
 }

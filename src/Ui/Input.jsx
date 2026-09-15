@@ -3,7 +3,7 @@ function Input() {
     <input
       type="text"
       placeholder="Search for courses..."
-      className="w-full p-2 rounded border text-black border-gray-300 focus:outline-none"
+      className="w-full p-2 rounded border text-black border-line focus:outline-none"
     />
   );
 }

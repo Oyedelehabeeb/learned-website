@@ -11,7 +11,7 @@ export function useGameDevelopmentInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: gameDevInstructors, count } = {}, isLoading } =
+  const { data: { data: gameDevInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["game-development-instructors", pageInst],
       queryFn: () => getGameDevelopmentInstructors({ pageInst }),
@@ -29,5 +29,5 @@ export function useGameDevelopmentInstructors() {
       queryFn: () => getGameDevelopmentInstructors({ pageInst: pageInst - 1 }),
     });
 
-  return { gameDevInstructors, isLoading, count };
+  return { gameDevInstructors, isLoading, count, error, refetch };
 }

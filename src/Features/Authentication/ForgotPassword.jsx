@@ -1,42 +1,9 @@
-// src/pages/ForgotPassword.jsx
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useForgetPassword } from "../../Services/useForgetPassword";
-
-function ForgotPassword() {
+import AuthLayout from "../../Ui/AuthLayout";
+export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const { SendResetPasswordLink, isLoading } = useForgetPassword();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!email) return;
-    SendResetPasswordLink(email);
-  }
-
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-darkGray">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-md shadow-md w-full max-w-md"
-      >
-        <h2 className="text-2xl font-bold mb-4">Forgot Password</h2>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          className="w-full p-3 mb-4 border rounded-md"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700"
-          disabled={isLoading}
-        >
-          {isLoading ? "Sending..." : "Send Reset Link"}
-        </button>
-      </form>
-    </div>
-  );
+  return <AuthLayout><span className="eyebrow">LET’S GET YOU BACK IN</span><h1>Forgot your password?</h1><p className="auth-intro">Enter your email address and we’ll send you a link to reset your password.</p><form className="auth-form" onSubmit={e => { e.preventDefault(); SendResetPasswordLink(email); }}><div className="form-field"><label htmlFor="reset-email">Email address</label><input id="reset-email" type="email" autoComplete="email" placeholder="you@example.com" value={email} onChange={e => setEmail(e.target.value)} required disabled={isLoading} /></div><button className="btn btn-primary" disabled={isLoading}>{isLoading ? "Sending link…" : "Send reset link"}</button></form><p className="auth-switch"><Link to="/login">Back to sign in</Link></p></AuthLayout>;
 }
-
-export default ForgotPassword;

@@ -10,7 +10,8 @@ export function useLogin() {
     mutationFn: loginApi,
     onSuccess: (user) => {
       toast.success("Logged in successfully");
-      queryClient.setQueryData(["user", user.user]);
+      queryClient.setQueryData(["user"], user.user);
+      queryClient.invalidateQueries({ queryKey: ["session"] });
       navigate("/home", { replace: true });
     },
     onError: (error) => {

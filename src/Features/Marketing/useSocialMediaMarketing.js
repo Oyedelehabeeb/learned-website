@@ -9,7 +9,7 @@ export function useSocialMediaMarketing() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: socialMediaMarketing, count } = {}, isLoading } =
+  const { data: { data: socialMediaMarketing, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["social-media-marketing", page],
       queryFn: () => getSocialMediaMarketingCourses({ page }),
@@ -29,5 +29,5 @@ export function useSocialMediaMarketing() {
       queryFn: () => getSocialMediaMarketingCourses({ page: page - 1 }),
     });
 
-  return { socialMediaMarketing, count, isLoading };
+  return { socialMediaMarketing, count, isLoading, error, refetch };
 }

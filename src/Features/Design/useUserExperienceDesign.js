@@ -8,7 +8,7 @@ export function useUserExperienceDesign() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: userExperienceDesign, count } = {}, isLoading } =
+  const { data: { data: userExperienceDesign, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["user-experience-design", page],
       queryFn: () => getUserExperienceDesignCourses({ page }),
@@ -28,5 +28,5 @@ export function useUserExperienceDesign() {
       queryFn: () => getUserExperienceDesignCourses({ page: page - 1 }),
     });
 
-  return { userExperienceDesign, isLoading, count };
+  return { userExperienceDesign, isLoading, count, error, refetch };
 }

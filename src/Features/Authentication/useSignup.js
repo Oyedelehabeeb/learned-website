@@ -7,11 +7,11 @@ export function useSignup() {
   const navigate = useNavigate();
   const { mutate: signup, isLoading } = useMutation({
     mutationFn: signupApi,
-    onSuccess: (user) => {
+    onSuccess: () => {
       toast.success("Signup successful");
-      console.log(user);
       navigate("/login");
     },
+    onError: (error) => toast.error(error.message || "Could not create your account. Please try again."),
   });
   return { signup, isLoading };
 }

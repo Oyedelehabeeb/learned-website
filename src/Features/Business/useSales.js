@@ -9,7 +9,7 @@ export function useSales() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: sales, count } = {}, isLoading } = useQuery({
+  const { data: { data: sales, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["sales", page],
     queryFn: () => getSalesCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useSales() {
       queryFn: () => getSalesCourses({ page: page - 1 }),
     });
 
-  return { sales, count, isLoading };
+  return { sales, count, isLoading, error, refetch };
 }

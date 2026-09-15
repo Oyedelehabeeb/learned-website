@@ -11,7 +11,7 @@ export function useMobileDevelopmentInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: mobileDevInstructors, count } = {}, isLoading } =
+  const { data: { data: mobileDevInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["mobile-development-instructors", pageInst],
       queryFn: () => getMobileDevelopmentInstructors({ pageInst }),
@@ -31,5 +31,5 @@ export function useMobileDevelopmentInstructors() {
         getMobileDevelopmentInstructors({ pageInst: pageInst - 1 }),
     });
 
-  return { mobileDevInstructors, isLoading, count };
+  return { mobileDevInstructors, isLoading, count, error, refetch };
 }

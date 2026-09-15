@@ -11,7 +11,7 @@ export function useCryptocurrencyInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: cryptoInstructors, count } = {}, isLoading } = useQuery(
+  const { data: { data: cryptoInstructors, count } = {}, isLoading, error, refetch } = useQuery(
     {
       queryKey: ["crypto-instructors", pageInst],
       queryFn: () => getCryptocurrencyInstructors({ pageInst }),
@@ -32,5 +32,5 @@ export function useCryptocurrencyInstructors() {
       queryFn: () => getCryptocurrencyInstructors({ pageInst: pageInst - 1 }),
     });
 
-  return { cryptoInstructors, count, isLoading };
+  return { cryptoInstructors, count, isLoading, error, refetch };
 }

@@ -9,7 +9,7 @@ export function useManagement() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: management, count } = {}, isLoading } = useQuery({
+  const { data: { data: management, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["management", page],
     queryFn: () => getManagementCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useManagement() {
       queryFn: () => getManagementCourses({ page: page - 1 }),
     });
 
-  return { management, count, isLoading };
+  return { management, count, isLoading, error, refetch };
 }

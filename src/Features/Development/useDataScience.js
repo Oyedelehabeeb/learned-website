@@ -8,7 +8,7 @@ export function useDataScience() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: dataScience, count } = {}, isLoading } = useQuery({
+  const { data: { data: dataScience, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["data-science", page],
     queryFn: () => getDataScienceCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useDataScience() {
       queryFn: () => getDataScienceCourses({ page: page - 1 }),
     });
 
-  return { dataScience, count, isLoading };
+  return { dataScience, count, isLoading, error, refetch };
 }

@@ -1,116 +1,17 @@
-// src/Components/CourseLists.js
-import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
+import { FiHeart, FiCheck, FiStar, FiShoppingBag } from "react-icons/fi";
 import { useCart } from "../Features/Cart/useCart";
 import { useWishlist } from "../Features/WishList/useWishList";
+import { useUser } from "../Features/Authentication/useUser";
 import { formatCurrency } from "../Utils/helper";
-import { useSession } from "../Services/useSession";
-import Loader from "./Loader";
-
-/* eslint-disable react/prop-types */
-function CourseLists({ course }) {
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isAddedToWishlist, setIsAddedToWishlist] = useState(false);
-
-  const { data: session, isLoading } = useSession();
+export default function CourseLists({ course }) {
+  const { user } = useUser();
+  const { cart, addItem: addCart, isAdding: cartBusy } = useCart();
+  const { wishlist, addItem: addWishlist, isAdding: wishlistBusy } = useWishlist();
   const { courseId, title, imageUrl, price, instructor, rating } = course;
-
-  const { addItem: addCartItem, isAdding: isAddingCart, cart } = useCart();
-  const {
-    addItem: addWishlistItem,
-    isAdding: isAddingWishlist,
-    wishlist,
-  } = useWishlist();
-
-  useEffect(() => {
-    const inCart = cart?.some((item) => item && item.id === courseId);
-    const inWishlist = wishlist?.some((item) => item && item.id === courseId);
-
-    setIsAddedToCart(inCart);
-    setIsAddedToWishlist(inWishlist);
-  }, [cart, wishlist, courseId]);
-
-  function handleAddCartItem() {
-    if (!session) {
-      console.error("User not authenticated");
-      return;
-    }
-
-    const userId = session.user.id;
-    const newItem = {
-      id: courseId,
-      title,
-      imageUrl,
-      price,
-      instructor,
-      rating,
-      user_id: userId,
-    };
-    addCartItem(newItem);
-  }
-
-  function handleAddWishlistItem() {
-    if (!session) {
-      console.error("User not authenticated");
-      return;
-    }
-
-    const userId = session.user.id;
-    const newItem = {
-      id: courseId,
-      title,
-      imageUrl,
-      price,
-      instructor,
-      rating,
-      user_id: userId,
-    };
-    addWishlistItem(newItem);
-  }
-
-  if (isLoading) return <Loader />;
-
-  return (
-    <div className="border rounded-md shadow-lg hover:shadow-xl overflow-hidden transition-transform duration-300 hover:scale-105 flex flex-col">
-      <NavLink to={`/courses/${courseId}`}>
-        <img src={imageUrl} alt="Course" className="w-full h-48 object-cover" />
-        <div className="p-4 flex flex-col flex-grow">
-          <h3 className="text-lg font-bold text-gray-800 mb-2 truncate">
-            {title}
-          </h3>
-          <p className="text-gray-600 truncate">{instructor}</p>
-          <p className="text-yellow-500 text-lg font-semibold">
-            {formatCurrency(price)}
-          </p>
-          <p className="text-gray-600 font-bold">
-            Rating: {rating} <span className="text-yellow-500">⭐</span>
-          </p>
-        </div>
-      </NavLink>
-
-      <div className="p-4 flex justify-between items-center">
-        {!isAddedToWishlist && (
-          <button
-            className="px-2 sm:px-3 md:px-4 h-10 md:h-auto sm:h-auto py-2 bg-pink-500 text-white rounded-md hover:bg-pink-600 transition"
-            onClick={handleAddWishlistItem}
-            disabled={isAddingWishlist}
-          >
-            Add to Wishlist
-          </button>
-        )}
-
-        {!isAddedToCart && (
-          <button
-            className="px-2 sm:px-3 md:px-4 h-10 md:h-auto sm:h-auto py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
-            onClick={handleAddCartItem}
-            disabled={isAddingCart}
-          >
-            Add to Cart
-          </button>
-        )}
-      </div>
-    </div>
-  );
+  const saved = wishlist.some(item => String(item.id) === String(courseId));
+  const added = cart.some(item => String(item.id) === String(courseId));
+  function add(mutate) { if (user?.id) mutate({ id: courseId, title, imageUrl, price, instructor, rating, user_id: user.id }); }
+  return <article className="course-card"><Link to={`/courses/${courseId}`} aria-label={`View ${title}`}><img className="course-card-image" src={imageUrl} alt="" loading="lazy" /></Link><div className="course-card-body"><div className="course-card-label">BUILD YOUR NEXT SKILL</div><Link to={`/courses/${courseId}`}><h3>{title}</h3></Link><p className="course-instructor">{instructor}</p><div className="course-meta"><strong>{formatCurrency(price)}</strong><span className="course-rating"><FiStar />{rating}</span></div></div><div className="course-card-actions"><button className={`save-button ${saved ? "saved" : ""}`} title={saved ? "Saved to wishlist" : "Save to wishlist"} aria-label={saved ? `${title} is saved to wishlist` : `Save ${title} to wishlist`} aria-pressed={saved} disabled={saved || wishlistBusy || !user} onClick={() => add(addWishlist)}><FiHeart /></button>{added ? <Link className="btn btn-outline" to="/cart"><FiCheck />In your cart</Link> : <button className="btn btn-primary" disabled={cartBusy || !user} onClick={() => add(addCart)}>{cartBusy ? "Adding…" : <><FiShoppingBag />Add to cart</>}</button>}</div></article>;
 }
-
-export default CourseLists;

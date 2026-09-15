@@ -1,39 +1,9 @@
 /* eslint-disable react/prop-types */
-import { formatCurrency } from "./../../Utils/helper";
+import { FiCreditCard, FiTrash2 } from "react-icons/fi";
+import { formatCurrency } from "../../Utils/helper";
 import { useDeletePaymentHistory } from "./useDeletePaymentHistory";
-function PaymentHistoryList({ payment }) {
-  const { id, price, currency, status, created_at } = payment;
+export default function PaymentHistoryList({ payment }) {
   const { deletePaymentHistory, isDeleting } = useDeletePaymentHistory();
-
-  function handleDelete() {
-    deletePaymentHistory(id);
-  }
-
-  return (
-    <div>
-      <div className="p-4 border rounded-md shadow-md bg-white">
-        <p>
-          <strong>Transaction Reference:</strong>
-        </p>
-        <p>Amount: {formatCurrency(price)}</p>
-        <p>Currency: {currency}</p>
-        <p>Status: {status}</p>
-        <p>Date: {created_at}</p>
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-          <div></div>
-          <button
-            className={`px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition ${
-              isDeleting ? "cursor-not-allowed opacity-50" : ""
-            }`}
-            onClick={handleDelete}
-            disabled={isDeleting}
-          >
-            {isDeleting ? "Deleting" : "Delete"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  const date = new Date(payment.created_at);
+  return <article className="payment-card"><span className="category-icon"><FiCreditCard /></span><div className="payment-info"><h3>{payment.tx_ref || "Course purchase"}</h3><p>{Number.isNaN(date.getTime()) ? payment.created_at : date.toLocaleDateString("en-NG", { day: "numeric", month: "short", year: "numeric" })}</p><span className={`payment-status ${payment.status === "successful" ? "success" : ""}`}>{payment.status || "Pending"}</span></div><div className="payment-actions"><strong>{formatCurrency(payment.price)}</strong><small>{payment.currency}</small><button className="remove-button" disabled={isDeleting} onClick={() => deletePaymentHistory(payment.id)} aria-label="Delete this payment record"><FiTrash2 />{isDeleting ? "Deleting…" : "Delete record"}</button></div></article>;
 }
-
-export default PaymentHistoryList;

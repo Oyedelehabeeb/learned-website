@@ -1,25 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { useUser } from "../Features/Authentication/useUser";
-import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
-
-function ProtectedRoute({ children }) {
+export default function ProtectedRoute({ children }) {
   const { isAuthenticated, isLoading } = useUser();
-  const navigate = useNavigate();
-
-  useEffect(
-    function () {
-      if (!isAuthenticated && !isLoading) {
-        navigate("/");
-      }
-    },
-    [isAuthenticated, isLoading, navigate]
-  );
-
   if (isLoading) return <Loader />;
-
-  if (isAuthenticated) return children;
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
 }
-
-export default ProtectedRoute;

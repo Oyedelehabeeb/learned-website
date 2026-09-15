@@ -9,7 +9,7 @@ export function useMentalHealth() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: mentalHealth, count } = {}, isLoading } = useQuery({
+  const { data: { data: mentalHealth, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["mentalHealth", page],
     queryFn: () => getMentalHealthCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useMentalHealth() {
       queryFn: () => getMentalHealthCourses({ page: page - 1 }),
     });
 
-  return { mentalHealth, count, isLoading };
+  return { mentalHealth, count, isLoading, error, refetch };
 }

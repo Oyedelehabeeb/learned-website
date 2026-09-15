@@ -11,7 +11,7 @@ export function useAnatomyInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: anatomyInstructors, count } = {}, isLoading } =
+  const { data: { data: anatomyInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["anatomy-instructors", pageInst],
       queryFn: () => getAnatomyInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useAnatomyInstructors() {
       queryKey: ["anatomy-instructors", pageInst - 1],
       queryFn: () => getAnatomyInstructors({ pageInst: pageInst - 1 }),
     });
-  return { anatomyInstructors, count, isLoading };
+  return { anatomyInstructors, count, isLoading, error, refetch };
 }

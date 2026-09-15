@@ -9,7 +9,7 @@ export function useDigitalMarketing() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: digitalMarketing, count } = {}, isLoading } = useQuery({
+  const { data: { data: digitalMarketing, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["digital-marketing", page],
     queryFn: () => getDigitalMarketingCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useDigitalMarketing() {
       queryFn: () => getDigitalMarketingCourses({ page: page - 1 }),
     });
 
-  return { digitalMarketing, count, isLoading };
+  return { digitalMarketing, count, isLoading, error, refetch };
 }

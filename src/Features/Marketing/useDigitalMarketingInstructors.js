@@ -11,7 +11,7 @@ export function useDigitalMarketingInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: digitalMarketingInstructors, count } = {}, isLoading } =
+  const { data: { data: digitalMarketingInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["digital-marketing-instructors", pageInst],
       queryFn: () => getDigitalMarketingInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useDigitalMarketingInstructors() {
       queryKey: ["digital-marketing-instructors", pageInst - 1],
       queryFn: () => getDigitalMarketingInstructors({ pageInst: pageInst - 1 }),
     });
-  return { digitalMarketingInstructors, count, isLoading };
+  return { digitalMarketingInstructors, count, isLoading, error, refetch };
 }

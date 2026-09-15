@@ -8,7 +8,7 @@ export function useClinicalResearch() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: clinicalResearch, count } = {}, isLoading } = useQuery({
+  const { data: { data: clinicalResearch, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["clinical-research", page],
     queryFn: () => getClinicalResearchCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useClinicalResearch() {
       queryFn: () => getClinicalResearchCourses({ page: page - 1 }),
     });
 
-  return { clinicalResearch, count, isLoading };
+  return { clinicalResearch, count, isLoading, error, refetch };
 }

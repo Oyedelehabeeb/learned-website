@@ -1,11 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import { Toaster } from "react-hot-toast";
-import Loader from "./Ui/Loader";
+import RouteEffects from "./Ui/RouteEffects";
 
-const AppLayout = lazy(() => import("./Ui/AppLayout"));
+import AppLayout from "./Ui/AppLayout";
 const WebDevelopmentPage = lazy(() => import("./Pages/WebDevelopmentPage"));
 const MobileDevelopmentPage = lazy(() =>
   import("./Pages/MobileDevelopmentPage")
@@ -26,38 +25,34 @@ const ManagementPage = lazy(() => import("./Pages/ManagementPage"));
 const NutritionPage = lazy(() => import("./Pages/NutritionPage"));
 const MentalHealthPage = lazy(() => import("./Pages/MentalHealthPage"));
 const FitnessHealth = lazy(() => import("./Features/Fitness/FitnessHealth"));
-const PageNotFound = lazy(() => import("./Ui/PageNotFound"));
+import PageNotFound from "./Ui/PageNotFound";
 const CourseDetails = lazy(() => import("./Ui/CourseDetails"));
-const DesignHero = lazy(() => import("./Features/Design/DesignHero"));
-const DevelopmentHero = lazy(() =>
-  import("./Features/Development/DevelopmentHero")
-);
-const MarketingHero = lazy(() => import("./Features/Marketing/MarketingHero"));
-const BusinessHero = lazy(() => import("./Features/Business/BusinessHero"));
-const FitnessHero = lazy(() => import("./Features/Fitness/FitnessHero"));
+import DesignHero from "./Features/Design/DesignHero";
+import DevelopmentHero from "./Features/Development/DevelopmentHero";
+import MarketingHero from "./Features/Marketing/MarketingHero";
+import BusinessHero from "./Features/Business/BusinessHero";
+import FitnessHero from "./Features/Fitness/FitnessHero";
 const CryptocurrencyPage = lazy(() => import("./Pages/CryptocurrencyPage"));
 const InvestingPage = lazy(() => import("./Pages/InvestingPage"));
 const AccountingPage = lazy(() => import("./Pages/AccountingPage"));
 const MedicalCodingPage = lazy(() => import("./Pages/MedicalCodingPage"));
 const AnatomyPage = lazy(() => import("./Pages/AnatomyPage"));
 const ResearchPage = lazy(() => import("./Pages/ResearchPage"));
-const FinanceHero = lazy(() => import("./Features/Finance/FinanceHero"));
-const AcademicsHero = lazy(() => import("./Features/Academics/AcademicsHero"));
+import FinanceHero from "./Features/Finance/FinanceHero";
+import AcademicsHero from "./Features/Academics/AcademicsHero";
 const FinancePage = lazy(() => import("./Pages/FinancePage"));
 const AcademicsPage = lazy(() => import("./Pages/AcademicsPage"));
 const ClinicalResearchPage = lazy(() => import("./Pages/ClinicalResearchPage"));
 const InstructorsDetails = lazy(() => import("./Ui/InstructorsDetails"));
-const LoginPage = lazy(() => import("./Pages/LoginPage"));
-const SignupPage = lazy(() => import("./Pages/SignupPage"));
-const SettingsPage = lazy(() => import("./Pages/SettingsPage"));
+import LoginPage from "./Pages/LoginPage";
+import SignupPage from "./Pages/SignupPage";
+import SettingsPage from "./Pages/SettingsPage";
 const PaymentHistoryPage = lazy(() => import("./Pages/PaymentHistoryPage"));
-const ProtectedRoute = lazy(() => import("./Ui/ProtectedRoute"));
-const ForgotPasswordPage = lazy(() => import("./Pages/ForgotPasswordPage"));
-const UpdateUserPasswordPage = lazy(() =>
-  import("./Pages/UpdateUserPasswordPage")
-);
+import ProtectedRoute from "./Ui/ProtectedRoute";
+import ForgotPasswordPage from "./Pages/ForgotPasswordPage";
+import UpdateUserPasswordPage from "./Pages/UpdateUserPasswordPage";
 const WishListPage = lazy(() => import("./Pages/WishListPage"));
-const HomePage = lazy(() => import("./Pages/HomePage"));
+import HomePage from "./Pages/HomePage";
 const DesignPage = lazy(() => import("./Pages/DesignPage"));
 const DevelopmentPage = lazy(() => import("./Pages/DevelopmentPage"));
 const MarketingPage = lazy(() => import("./Pages/MarketingPage"));
@@ -65,22 +60,22 @@ const BusinessPage = lazy(() => import("./Pages/BusinessPage"));
 const FitnessPage = lazy(() => import("./Pages/FitnessPage"));
 const MyLearningPage = lazy(() => import("./Pages/MyLearningPage"));
 const CartPage = lazy(() => import("./Pages/CartPage"));
-const LandingPage = lazy(() => import("./Pages/LandingPage"));
+import LandingPage from "./Pages/LandingPage";
 
-function App() {
-  const queryClient = new QueryClient({
+const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 0,
+        staleTime: 60_000,
       },
     },
   });
+
+function App() {
   return (
     <div>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
-          <Suspense fallback={<Loader />}>
+          <RouteEffects />
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
@@ -215,10 +210,9 @@ function App() {
                   path="academics/academics-hero"
                   element={<AcademicsHero />}
                 />
-                <Route path="*" element={<PageNotFound />} />
               </Route>
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
-          </Suspense>
         </BrowserRouter>
         <Toaster
           position="top-center"

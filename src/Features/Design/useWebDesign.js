@@ -9,7 +9,7 @@ export function useWebDesign() {
   const [searchParams] = useSearchParams();
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: webDesign, count } = {}, isLoading } = useQuery({
+  const { data: { data: webDesign, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["web-design", page],
     queryFn: () => getWebDesignCourses({ page }),
   });
@@ -31,5 +31,5 @@ export function useWebDesign() {
   // const webDesign = data?.data ?? [];
   // const count = data?.count ?? 0;
 
-  return { webDesign, isLoading, count };
+  return { webDesign, isLoading, count, error, refetch };
 }

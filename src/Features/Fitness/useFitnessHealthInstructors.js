@@ -11,7 +11,7 @@ export function useFitnessHealthInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: fitnessHealthInstructors, count } = {}, isLoading } =
+  const { data: { data: fitnessHealthInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["fitness-health-instructors", pageInst],
       queryFn: () => getFitnessHealthInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useFitnessHealthInstructors() {
       queryKey: ["fitness-health-instructors", pageInst - 1],
       queryFn: () => getFitnessHealthInstructors({ pageInst: pageInst - 1 }),
     });
-  return { fitnessHealthInstructors, count, isLoading };
+  return { fitnessHealthInstructors, count, isLoading, error, refetch };
 }

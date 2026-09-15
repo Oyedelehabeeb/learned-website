@@ -11,7 +11,7 @@ export function useAccountingInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: accountingInstructors, count } = {}, isLoading } =
+  const { data: { data: accountingInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["accounting-instructors", pageInst],
       queryFn: () => getAccountingInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useAccountingInstructors() {
       queryKey: ["accounting-instructors", pageInst - 1],
       queryFn: () => getAccountingInstructors({ pageInst: pageInst - 1 }),
     });
-  return { accountingInstructors, count, isLoading };
+  return { accountingInstructors, count, isLoading, error, refetch };
 }

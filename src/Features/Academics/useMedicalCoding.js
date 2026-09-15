@@ -8,7 +8,7 @@ export function useMedicalCoding() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: medicalCoding, count } = {}, isLoading } = useQuery({
+  const { data: { data: medicalCoding, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["medical-coding", page],
     queryFn: () => getMedicalCodingCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useMedicalCoding() {
       queryFn: () => getMedicalCodingCourses({ page: page - 1 }),
     });
 
-  return { medicalCoding, count, isLoading };
+  return { medicalCoding, count, isLoading, error, refetch };
 }

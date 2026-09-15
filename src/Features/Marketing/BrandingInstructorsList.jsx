@@ -2,7 +2,7 @@
 function BrandingInstructorsList({ instructor }) {
   const { name, title, rating, avatarUrl } = instructor;
   return (
-    <div className="flex gap-x-4 justify-between items-center border rounded-lg shadow hover:shadow-lg p-4">
+    <div className="flex gap-x-4 justify-between items-center border rounded-lg shadow hover:shadow-sm p-4">
       <img
         src={avatarUrl}
         alt={name}

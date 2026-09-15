@@ -9,7 +9,7 @@ export function useNutrition() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: nutrition, count } = {}, isLoading } = useQuery({
+  const { data: { data: nutrition, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["nutrition", page],
     queryFn: () => getNutritionCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useNutrition() {
       queryFn: () => getNutritionCourses({ page: page - 1 }),
     });
 
-  return { nutrition, count, isLoading };
+  return { nutrition, count, isLoading, error, refetch };
 }

@@ -11,7 +11,7 @@ export function useSalesInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: salesInstructors, count } = {}, isLoading } = useQuery({
+  const { data: { data: salesInstructors, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["sales-instructors", pageInst],
     queryFn: () => getSalesInstructors({ pageInst }),
   });
@@ -27,5 +27,5 @@ export function useSalesInstructors() {
       queryKey: ["sales-instructors", pageInst - 1],
       queryFn: () => getSalesInstructors({ pageInst: pageInst - 1 }),
     });
-  return { salesInstructors, count, isLoading };
+  return { salesInstructors, count, isLoading, error, refetch };
 }

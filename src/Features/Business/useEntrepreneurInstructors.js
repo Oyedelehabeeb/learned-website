@@ -11,7 +11,7 @@ export function useEntrepreneurInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: entrepreneurInstructors, count } = {}, isLoading } =
+  const { data: { data: entrepreneurInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["entrepreneur-instructors", pageInst],
       queryFn: () => getEntrepreneurInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useEntrepreneurInstructors() {
       queryKey: ["entrepreneur-instructors", pageInst - 1],
       queryFn: () => getEntrepreneurInstructors({ pageInst: pageInst - 1 }),
     });
-  return { entrepreneurInstructors,count,isLoading };
+  return { entrepreneurInstructors,count,isLoading, error, refetch };
 }

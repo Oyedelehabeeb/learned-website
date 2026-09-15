@@ -8,7 +8,7 @@ export function useAccounting() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: accounting, count } = {}, isLoading } = useQuery({
+  const { data: { data: accounting, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["accounting", page],
     queryFn: () => getAccountingCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useAccounting() {
       queryFn: () => getAccountingCourses({ page: page - 1 }),
     });
 
-  return { accounting, count, isLoading };
+  return { accounting, count, isLoading, error, refetch };
 }

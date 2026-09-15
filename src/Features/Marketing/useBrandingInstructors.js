@@ -11,7 +11,7 @@ export function useBrandingInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: brandingInstructors, count } = {}, isLoading } =
+  const { data: { data: brandingInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["branding-instructors", pageInst],
       queryFn: () => getBrandingInstructors({ pageInst }),
@@ -29,5 +29,5 @@ export function useBrandingInstructors() {
       queryFn: () => getBrandingInstructors({ pageInst: pageInst - 1 }),
     });
 
-  return { brandingInstructors, count, isLoading };
+  return { brandingInstructors, count, isLoading, error, refetch };
 }

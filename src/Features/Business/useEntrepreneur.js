@@ -9,7 +9,7 @@ export function useEntrepreneur() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: entrepreneur, count } = {}, isLoading } = useQuery({
+  const { data: { data: entrepreneur, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["entrepreneur", page],
     queryFn: () => getEntrepreneurCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useEntrepreneur() {
       queryFn: () => getEntrepreneurCourses({ page: page - 1 }),
     });
 
-  return { entrepreneur, count, isLoading };
+  return { entrepreneur, count, isLoading, error, refetch };
 }

@@ -11,7 +11,7 @@ export function useManagementInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: managementInstructors, count } = {}, isLoading } =
+  const { data: { data: managementInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["management-instructors", pageInst],
       queryFn: () => getManagementInstructors({ pageInst }),
@@ -28,5 +28,5 @@ export function useManagementInstructors() {
       queryKey: ["management-instructors", pageInst - 1],
       queryFn: () => getManagementInstructors({ pageInst: pageInst - 1 }),
     });
-  return { managementInstructors, count, isLoading };
+  return { managementInstructors, count, isLoading, error, refetch };
 }

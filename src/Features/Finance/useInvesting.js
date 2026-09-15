@@ -8,7 +8,7 @@ export function useInvesting() {
   const [searchParams] = useSearchParams();
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
-  const { data: { data: investing, count } = {}, isLoading } = useQuery({
+  const { data: { data: investing, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["investing", page],
     queryFn: () => getInvestingCourses({ page }),
   });
@@ -25,5 +25,5 @@ export function useInvesting() {
       queryFn: () => getInvestingCourses({ page: page - 1 }),
     });
 
-  return { investing, count, isLoading };
+  return { investing, count, isLoading, error, refetch };
 }

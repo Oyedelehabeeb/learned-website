@@ -11,7 +11,7 @@ export function useWebDesignInstructors() {
     ? 1
     : Number(searchParams.get("pageInst"));
 
-  const { data: { data: webDesignInstructors, count } = {}, isLoading } =
+  const { data: { data: webDesignInstructors, count } = {}, isLoading, error, refetch } =
     useQuery({
       queryKey: ["web-design-instructors", pageInst],
       queryFn: () => getWebDesignInstructors({ pageInst }),
@@ -31,5 +31,5 @@ export function useWebDesignInstructors() {
       queryFn: () => getWebDesignInstructors({ pageInst: pageInst - 1 }),
     });
 
-  return { webDesignInstructors, isLoading, count };
+  return { webDesignInstructors, isLoading, count, error, refetch };
 }

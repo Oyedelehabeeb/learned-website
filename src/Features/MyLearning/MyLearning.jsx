@@ -1,19 +1,11 @@
+import { Link } from "react-router-dom";
+import { FiBookOpen, FiArrowRight } from "react-icons/fi";
 import { useSession } from "../../Services/useSession";
 import MyLearningList from "./MyLearningList";
 import { useMyLearning } from "./useMyLearning";
-
-function MyLearning() {
-  const { session } = useSession();
-  const userId = session?.user?.id;
-  const { myLearning } = useMyLearning(userId);
-  return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">My Learning</h1>
-      {myLearning?.map((item, index) => (
-        <MyLearningList key={index} item={item} />
-      ))}
-    </div>
-  );
+import Loader from "../../Ui/Loader";
+export default function MyLearning() {
+  const { data: session, isLoading: sessionLoading } = useSession();
+  const { myLearning = [], isLoading } = useMyLearning(session?.user?.id);
+  return <div><header className="page-heading"><span className="eyebrow">KEEP YOUR MOMENTUM</span><h1>My learning</h1><p>Your courses, together in one place. Every step counts.</p></header>{sessionLoading || isLoading ? <Loader /> : myLearning.length ? <div className="learning-list">{myLearning.map(item => <MyLearningList key={item.id || item.courseId} item={item} />)}</div> : <div className="empty-state"><span className="category-icon"><FiBookOpen /></span><h2>Your next chapter is waiting.</h2><p>When you enroll in a course, you’ll find it here.<br />Start by exploring a subject that interests you.</p><Link className="btn btn-primary" to="/home">Explore subjects <FiArrowRight /></Link></div>}</div>;
 }
-
-export default MyLearning;

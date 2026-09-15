@@ -9,7 +9,7 @@ export function useGameDevelopment() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: gameDevelopment, count } = {}, isLoading } = useQuery({
+  const { data: { data: gameDevelopment, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["game-development", page],
     queryFn: () => getGameDevelopmentCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useGameDevelopment() {
       queryFn: () => getGameDevelopmentCourses({ page: page - 1 }),
     });
 
-  return { gameDevelopment, count, isLoading };
+  return { gameDevelopment, count, isLoading, error, refetch };
 }

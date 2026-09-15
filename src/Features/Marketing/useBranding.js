@@ -9,7 +9,7 @@ export function useBranding() {
 
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
-  const { data: { data: branding, count } = {}, isLoading } = useQuery({
+  const { data: { data: branding, count } = {}, isLoading, error, refetch } = useQuery({
     queryKey: ["branding", page],
     queryFn: () => getBrandingCourses({ page }),
   });
@@ -28,5 +28,5 @@ export function useBranding() {
       queryFn: () => getBrandingCourses({ page: page - 1 }),
     });
 
-  return { branding, count, isLoading };
+  return { branding, count, isLoading, error, refetch };
 }
